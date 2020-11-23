@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Graph.Communications.Calls.Media</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.AudioSendBuffer">
+            <summary>
+            Creates an Audio Buffer for Send and also implements Dispose
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.AudioSendBuffer.#ctor(System.IntPtr,System.Int64,Microsoft.Skype.Bots.Media.AudioFormat,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.AudioSendBuffer"/> class.
+            </summary>
+            <param name="data">The buffer data.</param>
+            <param name="length">The length of the buffer.</param>
+            <param name="audioFormat">The audio format.</param>
+            <param name="timeStamp">The time stamp.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.AudioSendBuffer.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaErrorConstants">
+            <summary>
+            Media error constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaErrorConstants.Codes">
+            <summary>
+            Error Codes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Calls.Media.MediaErrorConstants.Codes.MediaInitializationFailure">
+            <summary>
+            MediaInitializationFailure error code
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaErrorConstants.Messages">
+            <summary>
+            Error Messages
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Calls.Media.MediaErrorConstants.Messages.MediaPlatformInitializationFailed">
+            <summary>
+            MediaPlatformInitializationFailed message
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaSession">
+            <inheritdoc cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession" />
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Calls.Media.MediaSession.SocketFactory">
+            <summary>
+            Gets the global socket factory instance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Calls.Media.MediaSession.socketFactory">
+            <summary>
+            The media socket factory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Guid,Microsoft.Skype.Bots.Media.AudioSocketSettings,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings},Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.MediaSession" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="mediaSessionId">The media session id.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <exception cref="T:System.ArgumentException">When no media session id or no valid socket settings have been specified.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Guid,Microsoft.Skype.Bots.Media.AudioSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.MediaSession" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="mediaSessionId">The media session id.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <exception cref="T:System.ArgumentException">When no media session id or no valid socket settings have been specified.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Guid,Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory,Microsoft.Skype.Bots.Media.AudioSocketSettings,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings},Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.MediaSession" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="mediaSessionId">The media session id.</param>
+            <param name="socketFactory">The media socket Factory.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <exception cref="T:System.ArgumentException">When no media session id or no valid socket settings have been specified.</exception>
+            <exception cref="T:System.ArgumentNullException">When no socket factory has been specified.</exception>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.AudioSocket">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.VideoSockets">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.VideoSocket">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.VbssSocket">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.DataSocket">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.MediaSessionId">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.Modalities">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.GetMediaConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.CreateLogger(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Guid)">
+            <summary>
+            Creates a logger for the media session.
+            </summary>
+            <param name="logger">The graph logger instance.</param>
+            <param name="mediaSessionId">The media session identifier.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger"/> instance for the media session.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.CreateAudioSocket(System.Guid,Microsoft.Skype.Bots.Media.AudioSocketSettings)">
+            <summary>
+            The create audio socket.
+            </summary>
+            <param name="mediaSessionId">The media session id.</param>
+            <param name="settings">The settings.</param>
+            <returns>
+            The <see cref="T:Microsoft.Skype.Bots.Media.IAudioSocket" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.CreateVideoSocket(System.Guid,Microsoft.Skype.Bots.Media.VideoSocketSettings)">
+            <summary>
+            The create video socket.
+            </summary>
+            <param name="mediaSessionId">The media session id.</param>
+            <param name="settings">The settings.</param>
+            <returns>
+            The <see cref="T:Microsoft.Skype.Bots.Media.IVideoSocket" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.CreateDataSocket(System.Guid,Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <summary>
+            Creates the data socket.
+            </summary>
+            <param name="mediaSessionId">The media session identifier.</param>
+            <param name="settings">The settings.</param>
+            <returns>
+            The <see cref="T:Microsoft.Skype.Bots.Media.IDataSocket"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSession.CreateVideoSockets(System.Guid,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings})">
+            <summary>
+            The create video sockets.
+            </summary>
+            <param name="mediaSessionId">
+            The media session id.
+            </param>
+            <param name="settings">
+            The settings.
+            </param>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IReadOnlyList`1"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaSession.MediaProperties">
+            <summary>
+            Gets the media properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.MediaSession.MediaProperties.MediaSessionId">
+            <summary>
+            Gets or sets the media session identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory">
+            <summary>
+            The media socket factory
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.AudioSocketSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.VideoSocketSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory.CreateSockets(System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaSocketFactory.CreateMediaConfiguration(Microsoft.Skype.Bots.Media.IAudioSocket,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.IVideoSocket},Microsoft.Skype.Bots.Media.IVideoSocket,Microsoft.Skype.Bots.Media.IDataSocket)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer">
+            <summary>
+            Creates a Video Buffer for Send and also implements Dispose
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer.#ctor(System.IntPtr,System.Int64,Microsoft.Skype.Bots.Media.VideoFormat,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer" /> class.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="length">The length.</param>
+            <param name="videoFormat">The video format.</param>
+            <param name="timeStamp">The time stamp.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer.#ctor(System.Byte[],System.UInt32,Microsoft.Skype.Bots.Media.VideoFormat,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer"/> class.
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <param name="length">The length.</param>
+            <param name="format">The format.</param>
+            <param name="timeStamp">The time stamp.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.VideoSendBuffer.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession.AudioSocket">
+            <summary>
+            Gets the audio socket associated with this media session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession.VideoSockets">
+            <summary>
+            Gets the list of video socket associated with this media session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession.VideoSocket">
+            <summary>
+            Gets the video socket associated with this media session.
+            If current media session contains multiple sockets, this will return the first one in the list.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession.VbssSocket">
+            <summary>
+            Gets the VBSS socket associated with this media session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession.DataSocket">
+            <summary>
+            Gets the data socket associated with this media session.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory">
+            <summary>
+            Factory for audio/video sockets
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.AudioSocketSettings)">
+            <summary>
+            Creates the audio socket.
+            </summary>
+            <param name="settings">The settings for the socket.</param>
+            <returns>The audio socket, or null if settings is null.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.VideoSocketSettings)">
+            <summary>
+            Creates the video socket.
+            </summary>
+            <param name="settings">The settings for the socket.</param>
+            <returns>The audio socket, or null if settings is null.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory.CreateSockets(System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings})">
+            <summary>
+            Creates the video sockets. Does not create sockets for NULL objects in the settings list.
+            </summary>
+            <param name="settings">The settings for the sockets.</param>
+            <returns>The list of video sockets, or null if settings is null or empty.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory.CreateSocket(Microsoft.Skype.Bots.Media.DataSocketSettings)">
+            <summary>
+            Creates the data socket.
+            </summary>
+            <param name="settings">The settings for the socket.</param>
+            <returns>The audio socket, or null if settings is null.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.IMediaSocketFactory.CreateMediaConfiguration(Microsoft.Skype.Bots.Media.IAudioSocket,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.IVideoSocket},Microsoft.Skype.Bots.Media.IVideoSocket,Microsoft.Skype.Bots.Media.IDataSocket)">
+            <summary>
+            Creates the media configuration using the specified socket configuration.
+            </summary>
+            <param name="audioSocket">The audio socket.</param>
+            <param name="videoSockets">The video sockets.</param>
+            <param name="vbssSocket">The VBSS socket.</param>
+            <param name="dataSocket">The data socket.</param>
+            <returns>
+            The media configuration JObject.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaCallExtensions">
+            <summary>
+            Stateful call media extensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCallExtensions.CreateMediaSession(Microsoft.Graph.Communications.Calls.ICall,Microsoft.Skype.Bots.Media.AudioSocketSettings,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings},Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings,System.Guid)">
+            <summary>
+            Creates a local media session for the provided call with
+            a given socket configuration.
+            </summary>
+            <param name="call">The call.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <param name="mediaSessionId">The id for the media session.</param>
+            <returns>
+            A <see cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the call has not been specified.</exception>
+            <exception cref="T:System.ArgumentException">If the call does not have a valid identifier.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCallExtensions.CreateMediaSession(Microsoft.Graph.Communications.Calls.ICall,Microsoft.Skype.Bots.Media.AudioSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings,System.Guid)">
+            <summary>
+            Creates a local media session for the provided call with
+            a given socket configuration.
+            </summary>
+            <param name="call">The call.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <param name="mediaSessionId">The id for the media session.</param>
+            <returns>
+            A <see cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the call has not been specified.</exception>
+            <exception cref="T:System.ArgumentException">If the call does not have a valid identifier.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCallExtensions.GetLocalMediaSession(Microsoft.Graph.Communications.Calls.ICall)">
+            <summary>
+            Gets the local media session for this call object.
+            </summary>
+            <param name="call">The call.</param>
+            <returns>Local media session object</returns>
+            <exception cref="T:System.InvalidCastException">This call does not have a
+            valid <see cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession"/> object.</exception>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientBuilderExtensions">
+            <summary>
+            The stateful client builder extension.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientBuilderExtensions.referenceCount">
+            <summary>
+            The reference count
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientBuilderExtensions.SetMediaPlatformSettings(Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder,Microsoft.Skype.Bots.Media.MediaPlatformSettings)">
+            <summary>
+            Set the local media platform settings. This function also initializes the local
+            media platform.
+            </summary>
+            <param name="statefulClientBuilder">The stateful client builder.</param>
+            <param name="mediaSettings">The media settings.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder"/>.</returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ClientException">When something fails while initializing the media platform.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientBuilderExtensions.TerminateAsync(Microsoft.Graph.Communications.Client.ICommunicationsClient,System.Boolean,System.TimeSpan)">
+            <summary>
+            Stops the specified stateful client. This would end all the calls and
+            shuts down the media platform.
+            This should only be used during shutdown.
+            </summary>
+            <param name="statefulClient">The stateful client.</param>
+            <param name="onlyMedia">if set to <c>true</c> terminate only the media platform.</param>
+            <param name="timeout">The timeout.</param>
+            <returns>True if all instances were terminated, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientExtensions">
+            <summary>
+            The stateful client extension.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientExtensions.CreateMediaSession(Microsoft.Graph.Communications.Client.ICommunicationsClient,Microsoft.Skype.Bots.Media.AudioSocketSettings,System.Collections.Generic.IEnumerable{Microsoft.Skype.Bots.Media.VideoSocketSettings},Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings,System.Guid)">
+            <summary>
+            Creates a local media session for the provided communications client with
+            a given socket configuration.
+            </summary>
+            <param name="client">The communications client.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <param name="mediaSessionId">The id for the media session.</param>
+            <returns>
+            A <see cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the communications client has not been specified.</exception>
+            <exception cref="T:System.ArgumentException">If the client does not have a valid identifier.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Calls.Media.MediaCommunicationsClientExtensions.CreateMediaSession(Microsoft.Graph.Communications.Client.ICommunicationsClient,Microsoft.Skype.Bots.Media.AudioSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.VideoSocketSettings,Microsoft.Skype.Bots.Media.DataSocketSettings,System.Guid)">
+            <summary>
+            Creates a local media session for the provided communications client with
+            a given socket configuration.
+            </summary>
+            <param name="statefulClient">The stateful client.</param>
+            <param name="audioSocketSettings">The audio socket settings.</param>
+            <param name="videoSocketSettings">The video socket settings.</param>
+            <param name="vbssSocketSettings">The video based screen sharing socket settings.</param>
+            <param name="dataSocketSettings">The data socket settings.</param>
+            <param name="mediaSessionId">The id for the media session.</param>
+            <returns>
+            A <see cref="T:Microsoft.Graph.Communications.Calls.Media.ILocalMediaSession" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the communications client has not been specified.</exception>
+            <exception cref="T:System.ArgumentException">If the client does not have a valid identifier.</exception>
+        </member>
+    </members>
+</doc>

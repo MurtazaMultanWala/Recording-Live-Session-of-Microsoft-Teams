@@ -1,0 +1,1692 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Graph.Communications.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider">
+            <summary>
+            The authentication provider interface.
+            This is used to authenticate <br/>
+            - Inbound requests from Microsoft Graph. It validates the request was issued by
+            Microsoft Graph. <br/>
+            - Outbound requests to Microsoft Graph. Tenant token is acquired to provide
+            Microsoft Graph the permissions the bot has been consented by the tenant admin
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider.AuthenticateOutboundRequestAsync(System.Net.Http.HttpRequestMessage,System.String)">
+            <summary>
+            Authenticates the specified request message.
+            This method will be called any time there is an outbound request. This
+            method should add any required headers for authentication (eg: Authorization).
+            </summary>
+            <param name="request">The outbound http request object.</param>
+            <param name="tenant">The tenant for which this request belongs to.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" />. SDK awaits on this task to make sure
+            the bot has included the required headers.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider.ValidateInboundRequestAsync(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Validates the inbound request.
+            This method will be called any time we have an incoming request.
+            Returning <see cref="F:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult.IsValid"/> false will result in
+            a Forbidden response being created.
+            SDK waits until a successful validation is returned along with tenant data in
+            <see cref="T:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult"/> to fire any events.
+            </summary>
+            <param name="request">The incoming request.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult" /> structure.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult">
+            <summary>
+            The result of the request validation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult.IsValid">
+            <summary>
+            Indicates whether the request is valid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult.TenantId">
+            <summary>
+            The tenant id for the incoming request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.GraphLoggerExtensions">
+            <summary>
+            The graph logger extensions for the communications client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphLoggerExtensions.ParseRequestId(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Parses the request identifier.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="request">The request.</param>
+            <returns>The message id.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphLoggerExtensions.ParseScenarioId(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Parses the scenario identifier.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="request">The request.</param>
+            <returns>The scenario id.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphLoggerExtensions.LogHttpRequest(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Net.Http.HttpRequestMessage,System.Net.HttpStatusCode,System.Object,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Logs the request message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="request">The request.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="requestContent">The request content.</param>
+            <param name="exception">The exception.</param>
+            <param name="memberName">The member name.</param>
+            <param name="filePath">The file path.</param>
+            <param name="lineNumber">The line number.</param>
+            <returns>The trace level of the logged request message.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphLoggerExtensions.LogHttpResponse(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Diagnostics.TraceLevel,System.Net.Http.HttpRequestMessage,System.Net.Http.HttpResponseMessage,System.Int64,System.Object,System.String,System.String,System.Int32)">
+            <summary>
+            Logs the http response message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="level">The log level.</param>
+            <param name="request">The request.</param>
+            <param name="response">The response.</param>
+            <param name="responseTime">The response time in milliseconds.</param>
+            <param name="responseContent">The response content.</param>
+            <param name="memberName">The member name.</param>
+            <param name="filePath">The file path.</param>
+            <param name="lineNumber">The line number.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.CommsConstants">
+            <summary>
+            The communications constants.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.CommsConstants.HttpPropertyNames">
+            <summary>
+            Constants used for HTTP property names
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.CommsConstants.HttpPropertyNames.ResponseHeaders">
+            <summary>
+            The Response Headers string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.CommsConstants.HttpPropertyNames.StatusCode">
+            <summary>
+            The Status Code string
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.CommsGeneratedErrorConstants">
+            <summary>
+            The generated error constants.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.CommsGeneratedErrorConstants.Codes">
+            <summary>
+            The codes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.CommsGeneratedErrorConstants.Codes.NotAllowed">
+            <summary>
+            Not allowed error code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.CommsGeneratedErrorConstants.Messages">
+            <summary>
+            The messages.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.CommsGeneratedErrorConstants.Messages.ResponseObjectUsedForUpdate">
+            <summary>
+            Response object used for update error message.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Exceptions.ClientException">
+            <summary>
+            Class for client error exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Exceptions.ClientException.#ctor(Microsoft.Graph.Error,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Exceptions.ClientException"/> class.
+            </summary>
+            <param name="error">The <see cref="T:Microsoft.Graph.Error"/> to wrap.</param>
+            <param name="innerException">The <see cref="T:System.Exception"/> to wrap.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants">
+            <summary>
+            Error Constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes">
+            <summary>
+            Error Codes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.GeneralException">
+            <summary>
+            The general exception error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.InvalidRequest">
+            <summary>
+            The invalid request error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.ItemNotFound">
+            <summary>
+            The item not found error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.NotAllowed">
+            <summary>
+            The not allowed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.Timeout">
+            <summary>
+            The timeout error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.TooManyRedirects">
+            <summary>
+            The too many redirects error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.ClientCallbackError">
+            <summary>
+            The client callback error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.MismatchedCompletedOperation">
+            <summary>
+            The mismatched completed operation error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.ClientContextMissing">
+            <summary>
+            The client context missing error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.OperationFailed">
+            <summary>
+            The operation failed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.RehydrationFailedWithNotFound">
+            <summary>
+            The re-hydration failed with not found error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.RehydrationFailedWithEmptyResource">
+            <summary>
+            The re-hydration failed with empty resource error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.ChatGone">
+            <summary>
+            Error code indicating the chat is gone/deleted from the server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Codes.BridgeGone">
+            <summary>
+            Error code indicating the bridge is gone/deleted from the server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages">
+            <summary>
+            Error Messages
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.AuthenticationProviderMissing">
+            <summary>
+            The authentication provider missing
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.BaseUrlMissing">
+            <summary>
+            The base URL missing
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.InvalidTypeForDateConverter">
+            <summary>
+            The invalid type for date converter
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.LocationHeaderNotSetOnRedirect">
+            <summary>
+            The location header not set on redirect
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.OverallTimeoutCannotBeSet">
+            <summary>
+            The overall timeout cannot be set
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.RequestTimedOut">
+            <summary>
+            The request timed out
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.RequestUrlMissing">
+            <summary>
+            The request URL missing
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.TooManyRedirectsFormatString">
+            <summary>
+            The too many redirects format string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.UnableToCreateInstanceOfTypeFormatString">
+            <summary>
+            The unable to create instance of type format string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.UnableToDeserializeNotification">
+            <summary>
+            The unable to deserialize notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationsAreEmpty">
+            <summary>
+            The notifications are empty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.UnexpectedExceptionOnSend">
+            <summary>
+            The unexpected exception on send
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.UnexpectedExceptionResponse">
+            <summary>
+            The unexpected exception response
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.ClientErrorProcessingNotifications">
+            <summary>
+            The client error processing notifications
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.ClientErrorAuthenticatingRequest">
+            <summary>
+            The client error processing notifications
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.MessageContentIsEmpty">
+            <summary>
+            The message content is empty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationResourcePathIsEmpty">
+            <summary>
+            The notification resource path is empty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationResourceNotRecognized">
+            <summary>
+            The notification resource is not recognized
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationChangeTypeIsEmpty">
+            <summary>
+            The notification change type is empty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationResourceDataIsEmpty">
+            <summary>
+            The notification resource data is empty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.NotificationUriNotSet">
+            <summary>
+            The notification URI not set
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.RehydrationFailedNotFound">
+            <summary>
+            The re-hydration failed not found
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Exceptions.ErrorConstants.Messages.RehydrationFailedWithEmptyResource">
+            <summary>
+            The re-hydration failed with empty resource
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">
+            <summary>
+            A Service Exception.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.ServiceException" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Exceptions.ServiceException.#ctor(Microsoft.Graph.Error,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException"/> class.
+            </summary>
+            <param name="error">The error.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Exceptions.ServiceException.#ctor(Microsoft.Graph.Error,System.Net.Http.Headers.HttpResponseHeaders,System.Net.HttpStatusCode,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException"/> class.
+            </summary>
+            <param name="error">The error.</param>
+            <param name="responseHeaders">The response headers.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.GraphModelExtensions">
+            <summary>
+            Generic graph model extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.GraphModelExtensions.FixModel(System.Object)">
+            <summary>
+            Fixes the model to match latest protocol.
+            </summary>
+            <param name="object">The object.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.GraphModelExtensions.FixIdentitySet(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Fixes the identity set to match latest protocol.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs">
+            <summary>
+            The collection notification event args.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs.#ctor(System.Uri,Microsoft.Graph.CommsNotification,Microsoft.Graph.ChangeType,System.Collections.Generic.IReadOnlyList{System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs" /> class.
+            </summary>
+            <param name="notification">The notification.</param>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="changeType">Type of the change.</param>
+            <param name="resourceData">The resource data.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs.ResourceData">
+            <summary>
+            Gets the resource data object list.
+            </summary>
+            <value>
+            The resource data object list.
+            </value>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions">
+            <summary>
+            Extensions for container client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.SanitizeResource(System.String,System.String)">
+            <summary>
+            Gets the model URI.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="baseUrl">The base URL.</param>
+            <returns>
+            The model uri string.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the resource string is null or whitespace.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.ProcessNotificationAsync(Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor,System.Net.Http.HttpRequestMessage,System.String)">
+            <summary>
+            Processes the notification sent from the server to the client.
+            This overload accepts the type of HttpRequest.
+            </summary>
+            <param name="processor">The processor.</param>
+            <param name="request">The request.</param>
+            <param name="tenant">The tenant for this request.</param>
+            <returns>
+            The <see cref="T:System.Net.Http.HttpResponseMessage"/> to be sent back.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.ProcessNotificationAsync(Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor,System.Net.Http.HttpRequestMessage,Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult)">
+            <summary>
+            Processes the notification sent from the server to the client.
+            This overload accepts the type of HttpRequest.
+            </summary>
+            <param name="processor">The processor.</param>
+            <param name="request">The request.</param>
+            <param name="validationResult">The results of validation for the the inbound <see cref="T:System.Net.Http.HttpRequestMessage"/>.</param>
+            <returns>
+            The <see cref="T:System.Net.Http.HttpResponseMessage"/> to be sent back.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.ProcessNotificationAsync(Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor,System.Net.Http.HttpRequestMessage,System.Func{System.Net.Http.HttpRequestMessage,System.Threading.Tasks.Task{Microsoft.Graph.Communications.Client.Authentication.RequestValidationResult}})">
+            <summary>
+            Processes the notification sent from the server to the client.
+            This overload accepts the type of HttpRequest.
+            </summary>
+            <param name="processor">The processor.</param>
+            <param name="request">The request.</param>
+            <param name="validateRequest">The callback to validate the inbound <see cref="T:System.Net.Http.HttpRequestMessage"/>.</param>
+            <returns>
+            The <see cref="T:System.Net.Http.HttpResponseMessage"/> to be sent back.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.ExtractResouceData(Microsoft.Graph.CommsNotification)">
+            <summary>
+            Extracts the resource data from the specified notification.
+            </summary>
+            <param name="notification">The notification.</param>
+            <returns>The resource data notification content.</returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the specified notification is invalid.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.TryGetGuid(System.Net.Http.Headers.HttpHeaders,System.String,System.Guid@)">
+            <summary>
+            Tries to get the GUID value for the specifed header.
+            </summary>
+            <param name="headers">The headers collection.</param>
+            <param name="header">The header to look at.</param>
+            <param name="guid">The found guid</param>
+            <returns>True if the specified header is a valid guid, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.ToNotifications(Microsoft.Graph.CommsNotification)">
+            <summary>
+            Converts the <see cref="T:Microsoft.Graph.CommsNotification"/> to <see cref="T:Microsoft.Graph.CommsNotifications"/>.
+            </summary>
+            <param name="notification">The notification.</param>
+            <returns>The <see cref="N:Microsoft.Graph.Communications.Core.Notifications"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.InvokeHandlerIfSet``1(System.Action{``0},``0)">
+            <summary>
+            Invokes the handler if set.
+            </summary>
+            <typeparam name="T">The event arguments type.</typeparam>
+            <param name="action">The action.</param>
+            <param name="notificationEventArgs">The notification event arguments.</param>
+            <returns>True if the handler was invoked, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessorExtensions.AddHeaders(System.Net.Http.HttpResponseMessage,System.Guid,System.Guid,System.Net.Http.Headers.HttpHeaders)">
+            <summary>
+            Adds the headers to the specified response.
+            </summary>
+            <param name="response">The response.</param>
+            <param name="requestId">The request id.</param>
+            <param name="scenarioId">The scenario id.</param>
+            <param name="requestHeaders">The request headers.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs">
+            <summary>
+            Event arguments used when exceptions are raised
+            in callbacks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs.#ctor(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs"/> class.
+            </summary>
+            <param name="notification">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs.Notification">
+            <summary>
+            Gets the notification that was being processed
+            while this callback failed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs.Exception">
+            <summary>
+            Gets the exception being raised.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor">
+            <summary>
+            The notification processor interface.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor.OnNotificationReceived">
+            <summary>
+            Occurs when a notification is received.
+            This is a global hook for all notifications.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor.OnResourceNotificationReceived">
+            <summary>
+            Occurs when a single resource notification is received.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor.OnCollectionNotificationReceived">
+            <summary>
+            Occurs when a collection notification is received.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor.ProcessNotifications(System.Uri,System.String,System.String,System.Guid,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Processes the notifications and raise the required callbacks.
+            This function should be called in order for the SDK to raise
+            any required events and process state changes.
+            </summary>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="content">The notifications content.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="requestId">The request identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="additionalData">Additional data associated with the notification.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs">
+            <summary>
+            Notification event arguments class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.#ctor(System.Uri,Microsoft.Graph.CommsNotification,Microsoft.Graph.ChangeType,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" /> class.
+            </summary>
+            <param name="notification">The notification.</param>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="changeType">Type of the change.</param>
+            <param name="resourceData">The resource data.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.NotificationId">
+            <summary>
+            Gets the notification identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.CallbackUri">
+            <summary>
+            Gets the callback URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.Notification">
+            <summary>
+            Gets the notification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.TenantId">
+            <summary>
+            Gets or sets the tenant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.RequestId">
+            <summary>
+            Gets or sets the request identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.ScenarioId">
+            <summary>
+            Gets or sets the scenario identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.ChangeType">
+            <summary>
+            Gets the type of the change.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.ResourceData">
+            <summary>
+            Gets the resource data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs.AdditionalData">
+            <summary>
+            Gets or sets the additional data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor">
+            <summary>
+            The notification processor class.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Core.Notifications.INotificationProcessor" />
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.platformSerializer">
+            <summary>
+            The platform serializer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.#ctor(Microsoft.Graph.ISerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor" /> class.
+            </summary>
+            <param name="serializer">The serializer.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.#ctor(Microsoft.Graph.IAuthenticationProvider,Microsoft.Graph.ISerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor" /> class.
+            </summary>
+            <param name="provider">The authentication provider.  This is not being used.</param>
+            <param name="serializer">The serializer.</param>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.OnNotificationReceived">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.OnResourceNotificationReceived">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.OnCollectionNotificationReceived">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.ExtractNotifications(System.String,Microsoft.Graph.ISerializer)">
+            <summary>
+            Extracts the notifications from the specified content string.
+            </summary>
+            <param name="content">The content.</param>
+            <param name="serializer">The serializer.</param>
+            <returns>
+            The deserialized <see cref="T:Microsoft.Graph.CommsNotifications" />.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the specified content is invalid.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.ProcessNotifications(System.Uri,System.String,System.String,System.Guid,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.ProcessNotifications(Microsoft.Graph.Communications.Core.Transport.IGraphRequest)">
+            <summary>
+            Process the incoming notification
+            </summary>
+            <param name="request">The request that contains the notification.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.InvokeResourceNotification(System.Uri,Microsoft.Graph.CommsNotification,System.Object,Microsoft.Graph.Communications.Core.Transport.IGraphRequest)">
+            <summary>
+            Gets the resource notification.
+            </summary>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="notification">The notification.</param>
+            <param name="resourceData">The resource data.</param>
+            <param name="request">The request that contains the notification.</param>
+            <returns>
+            The resource notification args that invoked.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Notifications.NotificationProcessor.InvokeCollectionNotification(System.Uri,Microsoft.Graph.CommsNotification,System.Collections.Generic.IReadOnlyList{System.Object},Microsoft.Graph.Communications.Core.Transport.IGraphRequest)">
+            <summary>
+            Invokes the collection notification.
+            </summary>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="notification">The notification.</param>
+            <param name="resourceData">The resource data.</param>
+            <param name="request">The request that contains the notification.</param>
+            <returns>
+            The collection notification args that were invoked.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer">
+            <summary>
+            An interface for serializing and deserializing JSON objects.
+            This serializer is used throughout the Communications workload
+            to provide extra functionality.  Specifically it supports
+            more robust serialization/deserialization of @odata.type property
+            and deserialization of open type additional data.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.ISerializer" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.#ctor(System.Boolean,System.Reflection.Assembly[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer" /> class.
+            </summary>
+            <param name="pretty">If set to <c>true</c> make the formatting pretty.</param>
+            <param name="assemblies">
+            The assemblies to use for deserialization.  The <see cref="T:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer"/>
+            searches through the specified assemblies in order specified to find the @odata.type in
+            the json payload.
+            </param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer"/> class.
+            </summary>
+            <param name="pretty">If set to <c>true</c> make the formatting pretty.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.CoreAssemblies">
+            <summary>
+            Gets the list of core <see cref="T:System.Reflection.Assembly"/> detected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.JsonSerializerSettings">
+            <summary>
+            Gets the JSON serializer settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.JsonSerializer">
+            <summary>
+            Gets the JSON serializer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.DeserializeObject``1(System.IO.Stream)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.DeserializeObject``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.SerializeObject(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.GetDefaultCoreAssemblies">
+            <summary>
+            Gets the default core assemblies.
+            If no assemblies are specified in the constructor, we will
+            use the standard assemblies within this solution.
+            </summary>
+            <returns>
+            The list of core <see cref="T:System.Reflection.Assembly" /> detected.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Serialization.CommsSerializer.AddAssembly(System.String,System.Collections.Generic.ICollection{System.Reflection.Assembly})">
+            <summary>
+            Adds the assembly at the specified location to the collection of assemblies.
+            </summary>
+            <param name="assemblyLocation">The assembly location.</param>
+            <param name="assemblies">The assemblies collection to add to.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Transport.GraphRequest">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Transport.GraphRequest.#ctor(System.String,System.Guid,System.Guid,System.String,System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Core.Transport.GraphRequest" /> class.
+            Create the graph request object
+            </summary>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="requestId">The request identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="content">The content of the request.</param>
+            <param name="location">The uri location for the request.</param>
+            <param name="additionalData">The additional data.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.TenantId">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.RequestId">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.ScenarioId">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.Content">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.Uri">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.GraphRequest.AdditionalData">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Core.Transport.GraphRequest.ToString">
+            <summary>
+            The request object converted into string.
+            </summary>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Core.Transport.IGraphRequest">
+            <summary>
+            The request object used by the graph SDK.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.TenantId">
+            <summary>
+            Gets the tenant identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.RequestId">
+            <summary>
+            Gets the request identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.ScenarioId">
+            <summary>
+            Gets the scenario identitifer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.Content">
+            <summary>
+            Gets the content of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.Uri">
+            <summary>
+            Gets the URI location for the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Core.Transport.IGraphRequest.AdditionalData">
+            <summary>
+            Gets the additional data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Common.Telemetry.CommsLogEventFormatter">
+            <summary>
+            Test log formatter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Common.Telemetry.CommsLogEventFormatter.Format(Microsoft.Graph.Communications.Common.Telemetry.LogEvent)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Common.Telemetry.CommsLogEventFormatter.AppendProperty(System.Text.StringBuilder,System.String,System.Object)">
+            <summary>
+            append properties to string builder.
+            </summary>
+            <param name="builder">The builder</param>
+            <param name="key">The property key to add</param>
+            <param name="value">The property value to add</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Common.Telemetry.CommsLogEventFormatter.AppendProperties(System.Text.StringBuilder,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            append properties to string builder.
+            </summary>
+            <param name="builder">The builder</param>
+            <param name="properties">The properties to add</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Common.Telemetry.LogProperties">
+            <summary>
+            The log properties.
+            </summary>
+            <remarks>
+            For better logging experience, all property names should be specific enough. Avoid using generic name such as Id, Name, etc.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.ObfuscationMembers">
+            <summary>
+            Gets the obfuscation members for communications APIs.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.ObfuscationSchema">
+            <summary>
+            The obfuscation schema.
+            This schema defines which classes and class members
+            require PII scrubbing, and how to scrub them.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.CallData">
+            <summary>
+            Call data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.CallData.CallId">
+            <summary>
+            Gets or sets the call identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.CallData.TenantId">
+            <summary>
+            Gets or sets the tenant identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.ChatData">
+            <summary>
+            Chat data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.ChatData.ChatId">
+            <summary>
+            Gets or sets the chat identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Common.Telemetry.LogProperties.ChatData.TenantId">
+            <summary>
+            Gets or sets the tenant identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.IdentityExtensions">
+            <summary>
+            Extensions for graph api contracts
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetTenantId(Microsoft.Graph.Identity)">
+            <summary>
+            Gets the tenant identifier.
+            </summary>
+            <param name="identity">The identity.</param>
+            <returns>The tenant identifier string.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetTenantId(Microsoft.Graph.Identity,System.String)">
+            <summary>
+            Sets the tenant identifier.
+            </summary>
+            <param name="identity">The identity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetIdentityProvider(Microsoft.Graph.Identity)">
+            <summary>
+            Gets the identity provider.
+            </summary>
+            <param name="identity">The identity.</param>
+            <returns>
+            The identity provider string.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetIdentityProvider(Microsoft.Graph.Identity,System.String)">
+            <summary>
+            Sets the identity provider.
+            </summary>
+            <param name="identity">The identity.</param>
+            <param name="identityProvider">The identity provider.</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetOnPremises(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the on-premises identity from identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Identity</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetOnPremises(Microsoft.Graph.IdentitySet,Microsoft.Graph.Identity)">
+            <summary>
+            Sets the on-premises identity in identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="identity">The identity.</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetGuest(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the guest identity from identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Identity</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetGuest(Microsoft.Graph.IdentitySet,Microsoft.Graph.Identity)">
+            <summary>
+            Sets the guest identity in identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="identity">The identity.</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetEncrypted(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Get the encrypted identity part of the additional data
+            This identity must be retrieved when other identities are not listed
+            </summary>
+            <param name="identity">The identity</param>
+            <returns>The encrypted identity</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetEncrypted(Microsoft.Graph.IdentitySet,Microsoft.Graph.Identity)">
+            <summary>
+            Sets the encrypted identity to the additional data
+            This identity must be retrieved when other identities are not listed
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="identity">The identity</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetApplicationInstance(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the application instance identity from identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Identity</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetApplicationInstance(Microsoft.Graph.IdentitySet,Microsoft.Graph.Identity)">
+            <summary>
+            Sets the application instance identity in identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="identity">The identity.</param>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.GetPhone(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the phone identity from identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Identity</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentityExtensions.SetPhone(Microsoft.Graph.IdentitySet,Microsoft.Graph.Identity)">
+            <summary>
+            Sets the phone identity in identity set.
+            This is part of additional data.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="identity">The identity.</param>
+        </member>
+        <member name="T:Microsoft.Graph.NotificationsExtensions">
+            <summary>
+            Communications notifications extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.NotificationsExtensions.SetResourceData(Microsoft.Graph.CommsNotification,System.Object)">
+            <summary>
+            Sets the resource data.
+            </summary>
+            <param name="notification">The notification.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.NotificationsExtensions.GetResourceData``1(Microsoft.Graph.CommsNotification)">
+            <summary>
+            Gets the resource data.
+            </summary>
+            <typeparam name="T">The expected resource data type.</typeparam>
+            <param name="notification">The notification.</param>
+            <returns>
+            The resource data <typeparamref name="T"/> object for the specified notification.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.NotificationsExtensions.GetResourceData(Microsoft.Graph.CommsNotification)">
+            <summary>
+            Gets the resource data.
+            </summary>
+            <param name="notification">The notification.</param>
+            <returns>
+            The resource data object for the specified notification.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.IdentitySetExtensions">
+            <summary>
+            Extentions for graph api contracts
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.EncryptedParticipantPrefix">
+            <summary>
+            The encrypted participant prefix
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PhoneParticipantPrefix">
+            <summary>
+            The phone participant prefix
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.SkypeParticipantPrefix">
+            <summary>
+            The skype participant prefix
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicAppParticipantPrefix">
+            <summary>
+            The application participant prefix
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicDirectoryParticipantPrefix">
+            <summary>
+            The directory participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.DodDirectoryParticipantPrefix">
+            <summary>
+            The directory participant prefix for DoD cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.GcchDirectoryParticipantPrefix">
+            <summary>
+            The directory participant prefix for GCCH cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicOnPremisesParticipantPrefix">
+            <summary>
+            The external prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.DodOnPremisesParticipantPrefix">
+            <summary>
+            The external prefix for DoD cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.GcchOnPremisesParticipantPrefix">
+            <summary>
+            The external prefix for GCCH cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.TeamsVisitorParticipantPrefix">
+            <summary>
+            The teams visitor participant prefix
+            For anonymous users we need to support 8:teamsvisitor:objectId
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicAcsAppInstanceParticipantPrefix">
+            <summary>
+            The azure communications service application instance participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicAcsUserParticipantPrefix">
+            <summary>
+            The azure communications service user participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicSpoolAppInstanceParticipantPrefix">
+            <summary>
+            The spool application instance participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicSpoolUserParticipantPrefix">
+            <summary>
+            The spool user participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.PublicDirectoryAppParticipantPrefix">
+            <summary>
+            The directory application participant prefix for public cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.DodDirectoryAppParticipantPrefix">
+            <summary>
+            The directory application participant prefix for dod cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.GcchDirectoryAppParticipantPrefix">
+            <summary>
+            The directory application participant prefix for gcch cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.DodAppParticipantPrefix">
+            <summary>
+            The application participant prefix for dod cloud
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.IdentitySetExtensions.GcchAppParticipantPrefix">
+            <summary>
+            The application participant prefix for gcch cloud
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetEnumerator(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Enumerates through all the <see cref="T:Microsoft.Graph.Identity"/> objects found in this <see cref="T:Microsoft.Graph.IdentitySet"/>
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>The IEnumerable{KeyValuePair{string, Identity}} for the specified <see cref="T:Microsoft.Graph.IdentitySet"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetPrimaryIdentity(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the primary identity from the specified <see cref="T:Microsoft.Graph.IdentitySet"/>.
+            The priority order is:
+            User, Guest, Phone, Encrypted, OnPremises, Application Instance, Application, Additional Data
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Primary Identity or NULL</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetPrimaryIdentityWithType(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Gets the primary identity with type from the specified <see cref="T:Microsoft.Graph.IdentitySet"/>.
+            The priority order is:
+            User, Guest, Phone, Encrypted, OnPremises, Application Instance, Application, Additional Data
+            If the identity is in AdditionalData, this will return the actual type in camel case string instead of "AdditionalData"
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns>Primary Identity with type or KeyValuePair(null, null)</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.IsConsumer(Microsoft.Graph.IdentitySet)">
+            <summary>
+            Indicates whether this identity set is a consumer identity.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <returns><c>true</c> if the identity is a consumer identity, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.IsConsumer(System.String)">
+            <summary>
+            Checks if the specified tenant is a consumer tenant.
+            </summary>
+            <param name="tenantId">The tenant identifier to check.</param>
+            <returns><c>true</c> if the specified tenant is empty or a consumer tenant, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetMri(Microsoft.Graph.IdentitySet,Microsoft.Graph.Routing.CloudNamespace,System.String)">
+            <summary>
+            Gets participant MRI
+            The priority order is:
+            User, Guest, Phone, Encrypted, OnPremises, Application Instance, Application
+            </summary>
+            <param name="identitySet">Participant identity set</param>
+            <param name="cloudNamespace">Cloud environment where the identity set belongs</param>
+            <param name="callTenantId">Fall back to checking the call's tenant id if the identit does not have a tenant specified.</param>
+            <returns>The MRI associated with the specifed identitySet.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetMri(Microsoft.Graph.IdentitySet,Microsoft.Graph.Routing.CloudNamespace,System.Boolean)">
+            <summary>
+            Gets participant MRI
+            The priority order is:
+            User, Guest, Phone, Encrypted, OnPremises, Application Instance, Application
+            </summary>
+            <param name="identitySet">Participant identity set</param>
+            <param name="cloudNamespace">Cloud environment where the identity set belongs</param>
+            <param name="isConsumer">Flag indicating if this identity is a consumer identity.</param>
+            <returns>The MRI associated with the specifed identitySet.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.CreateIdentitySetByMri(System.String,System.String,System.String)">
+            <summary>
+            Creates participant from MRI if possible.
+            For chat service thread mris we return null
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="displayName">The display name.</param>
+            <returns>Created identity set</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">mri</exception>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetDirectoryParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets a user prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the user belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetOnPremisesParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets an external prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the user belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetDirectoryAppParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets directory app participant prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the directory app participant belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetDirectoryAppParticipantEnv(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Returns the env differentiator part of the app participant prefix corresponding to
+            <paramref name="cloudNamespace"/>. This differentiator doesn't have participant prefix (8:, 4:, 28: or 29:) in it.
+            </summary>
+            <param name="cloudNamespace">Cloud environment where the identity set belongs</param>
+            <returns>
+            Env differentiator part of the app participant prefix corresponding to <paramref name="cloudNamespace"/>
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetAppParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets app participant prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the app participant belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetAcsAppInstanceParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets azure communications service appinstance participant prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the acs application instance participant belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetAcsUserPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets azure communications service user prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the acs user belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetSpoolAppInstanceParticipantPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets spool appinstance participant prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the spool application instance participant belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetSpoolUserPrefix(Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets spool user prefix for the provided <see cref="T:Microsoft.Graph.Routing.CloudNamespace"/>.
+            </summary>
+            <param name="cloudNamespace">The cloud where the spool user belongs</param>
+            <returns>Prefix to be used to construct the MRI</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForDirectoryParticipant(System.String)">
+            <summary>
+            /Get the object id for a directory participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The object id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForOnPremisesParticipant(System.String)">
+            <summary>
+            /Get the object id for an external participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The object id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForAcsAppInstanceParticipant(System.String)">
+            <summary>
+            Get the object id for an azure communications service application instance participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForAcsUserParticipant(System.String)">
+            <summary>
+            Get the object id for an azure communications service user participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForSpoolAppInstanceParticipant(System.String)">
+            <summary>
+            Get the object id for a spool application instance participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForSpoolUserParticipant(System.String)">
+            <summary>
+            Get the object id for a spool user participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForDirectoryAppParticipant(System.String)">
+            <summary>
+            Get the object id for a directory app participant
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The object id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetObjectIdForAppParticipant(System.String)">
+            <summary>
+            Get the object id for an app
+            </summary>
+            <param name="mri">participant mri</param>
+            <returns>The object id of the participant></returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasDirectoryParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI is a directory participant prefix or not.
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid directory participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasOnPremisesParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI is an external participant prefix or not.
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid external participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasAcsAppInstanceParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI has an acs bot prefix
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid azure communications service app instance participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasAcsUserParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI has an acs user prefix
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid azure communications service user participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasSpoolAppInstanceParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI has a spool bot prefix
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid spool app instance participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasSpoolUserParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI has a spool user prefix
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid spool user participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasDirectoryAppParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI is a directory participant prefix or not.
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid directory participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.MriHasAppParticipantPrefix(System.String)">
+            <summary>
+            Returns whether a MRI is a directory participant prefix or not.
+            </summary>
+            <param name="mri">Participant MRI</param>
+            <returns><code>true</code> if <paramref name="mri"/> is a valid directory participant prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.TryCleanPrefixFromMri(System.String,System.String,System.String@)">
+            <summary>
+            Remove the prefix for the mri
+            </summary>
+            <param name="mri">MRI</param>
+            <param name="prefix">Prefix</param>
+            <param name="id">Mri after removing the prefix</param>
+            <returns><c>true</c> if the MRI contained the specified prefix, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.CleanPrefixFromMri(System.String,System.String)">
+            <summary>
+            Remove the prefix for the mri
+            </summary>
+            <param name="mri">MRI</param>
+            <param name="prefix">Prefix</param>
+            <returns>Mri after removing the prefix</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetUserMri(Microsoft.Graph.IdentitySet,Microsoft.Graph.Routing.CloudNamespace,System.Boolean)">
+            <summary>
+            Gets the user mri.
+            </summary>
+            <param name="identitySet">The identity set.</param>
+            <param name="cloudNamespace">Cloud environment where the identity set belongs</param>
+            <param name="isConsumer">Flag indicating if this identity is a consumer identity.</param>
+            <returns>Mri</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetUserMri(Microsoft.Graph.Identity,Microsoft.Graph.Routing.CloudNamespace)">
+            <summary>
+            Gets the user mri.
+            </summary>
+            <param name="identity">The identity.</param>
+            <param name="cloudNamespace">Cloud environment where the identity set belongs</param>
+            <returns>The user mri string.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.IdentitySetExtensions.GetGuestMri(Microsoft.Graph.Identity,Microsoft.Graph.Identity)">
+            <summary>
+            Gets the guest mri.
+            </summary>
+            <param name="identity">The identity.</param>
+            <param name="applicationIdentity">The application identity.</param>
+            <returns>The guest mri string.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Routing.CloudNamespace">
+            <summary>
+            Enumeration defining various cloud environment type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Routing.CloudNamespace.Public">
+            <summary>
+            Represents a service running on the public cloud installation of NGC or a user homed on the public cloud.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Routing.CloudNamespace.DoD">
+            <summary>
+            Represents a service running on the DoD cloud installation of NGC or a user homed on the DoD cloud.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Routing.CloudNamespace.GCCH">
+            <summary>
+            Represents a service running on the GCCH cloud installation of NGC or a user homed on the GCCH cloud.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Routing.CloudNamespace.NotApplicable">
+            <summary>
+            Used for users like 'teamsvisitor' or on premise sfb user for whom cloud namespace is not applicable
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants">
+            <summary>
+            OData Model Constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.AuthConstants">
+            <summary>
+            Various constants used by the AuthZ layer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.AuthConstants.ConsumerTenantIds">
+            <summary>
+            list of tenant ids that are considered as skype consumer tenants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.Signature">
+            <summary>
+            Signature for Assembly visibility.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.Signature.VisibleToMicrosoft">
+            <summary>
+            Visible to property added to InternalsVisibleTo Microsoft signed builds.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.Signature.VisibleToCastle">
+            <summary>
+            Visible to property added to InternalsVisibleTo Castle signed builds.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.EntityContainerNames">
+            <summary>
+            Singleton/EntitySet constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.Application">
+            <summary>
+            The application singleton root. Compatible for old path.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.Communications">
+            <summary>
+            The communications singleton for v1.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.Users">
+            <summary>
+            The users
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.Me">
+            <summary>
+            The "me"
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.Presence">
+            <summary>
+            The "presence"
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.EntityContainerNames.CallRecords">
+            <summary>
+            The "callRecords"
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.NotificationProperties">
+            <summary>
+            Notification properties constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.NotificationProperties.ResourceData">
+            <summary>
+            The resource data
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.IdentityProperties">
+            <summary>
+            Identity properties constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.Hidden">
+            <summary>
+            The hidden identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.TenantId">
+            <summary>
+            The tenant identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.User">
+            <summary>
+            The user identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.AcsUser">
+            <summary>
+            The azure communications service user identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.SpoolUser">
+            <summary>
+            The spool user identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.Guest">
+            <summary>
+            The guest identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.Encrypted">
+            <summary>
+            The encrypted identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.Phone">
+            <summary>
+            The phone identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.OnPremises">
+            <summary>
+            The on-premises identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.ApplicationInstance">
+            <summary>
+            The application instance identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.AcsApplicationInstance">
+            <summary>
+            The azure communications service application instance identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.SpoolApplicationInstance">
+            <summary>
+            The spool application instance identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.Application">
+            <summary>
+            The application identity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.IdentityProvider">
+            <summary>
+            The identity provider
+            TODO: Deprecated
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.IdentityProviderAAD">
+            <summary>
+            The AAD identity provider
+            TODO: Deprecated
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.IdentityProviderMSA">
+            <summary>
+            The MSA identity provider
+            TODO: Deprecated
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.IdentityProperties.IdentityProviderNone">
+            <summary>
+            The None identity provider
+            TODO: Deprecated
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.CallProperties">
+            <summary>
+            Call properties constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.CallProperties.AllowGuestToBypassLobby">
+            <summary>
+            The lobbyBypass value for group call join.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.ContractsConstants.CloudEnvironments">
+            <summary>
+            The constants of cloud environments.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.ContractsConstants.CloudEnvironments.GCCH">
+            <summary>
+            GCCH
+            </summary>
+        </member>
+    </members>
+</doc>

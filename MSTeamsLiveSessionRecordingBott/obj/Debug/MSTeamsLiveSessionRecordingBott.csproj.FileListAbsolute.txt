@@ -1,0 +1,300 @@
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.dll.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.pdb
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.exe
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.exe.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.rsp
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.exe
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.exe.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.rsp
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.AppContext.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Console.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.Compression.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Net.Http.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Net.Sockets.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.ValueTuple.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XPath.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.exe
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.exe.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.rsp
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\VBCSCompiler.exe
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Antlr3.Runtime.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Client.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Common.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Core.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Core.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Newtonsoft.Json.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Buffers.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Memory.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Net.Http.Formatting.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Numerics.Vectors.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Threading.Tasks.Dataflow.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Helpers.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.WebHost.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Mvc.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Optimization.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Razor.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Deployment.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Razor.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\WebGrease.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Antlr3.Runtime.pdb
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Client.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Common.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Core.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Core.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Buffers.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Memory.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Numerics.Vectors.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Threading.Tasks.Dataflow.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Helpers.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Mvc.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Optimization.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Razor.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Deployment.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Razor.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Newtonsoft.Json.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Net.Http.Formatting.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.WebHost.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csprojAssemblyReference.cache
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csproj.CoreCompileInputs.cache
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csproj.CopyComplete
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.dll
+C:\Users\murtaza.multan\source\repos\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.pdb
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\AppDomainResolver.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Applications.Telemetry.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Applications.Telemetry.Server.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Bond.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Bond.Interfaces.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Rtc.Internal.Media.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Rtc.Internal.Media.MediaApi.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.ECS.Client.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.ECS.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Internal.Media.AudioLib.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Internal.Media.H264.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Seatbelt.Core.ClientHelpers.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Seatbelt.Core.Common.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Seatbelt.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MP.Contracts.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MP.WebAPI.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MPAzAppHost.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MPServiceHostLib.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MPServiceImp.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\AppDomainResolver.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MediaPerf.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MediaPerf.h
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Applications.Telemetry.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Applications.Telemetry.Server.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Bond.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Bond.Interfaces.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Rtc.Internal.Media.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Rtc.Internal.Media.MediaApi.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.ECS.Client.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.ECS.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.Internal.Media.AudioLib.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.Internal.Media.H264.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.Seatbelt.Core.ClientHelpers.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.Seatbelt.Core.Common.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Skype.Seatbelt.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MP.Contracts.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MP.WebAPI.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MPAzAppHost.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MPServiceHostLib.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MPServiceImp.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\rtmcodecs.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\RtmMvrCs.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\rtmpal.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\SkypeRT.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\InstallMPServiceImpCounters.ps1
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MediaPerf.ini
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MediaPerf.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\MediaPlatformStartupScript.bat
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Rtc.Internal.Media.MediaApi.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\Microsoft.Rtc.Internal.Media.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\RtmCodecs.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\RtmMvrCs.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\RtmPal.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skype_media_lib\skypert.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\InstallMPServiceImpCounters.ps1
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MediaPerf.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MediaPerf.h
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MediaPerf.ini
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MediaPerf.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MediaPlatformStartupScript.bat
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Rtc.Internal.Media.MediaApi.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Rtc.Internal.Media.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\rtmcodecs.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\RtmCodecs.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\RtmMvrCs.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\RtmMvrCs.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\rtmpal.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\RtmPal.pdb.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\SkypeRT.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\skypert.logmap
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.dll.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\MSTeamsLiveSessionRecordingBott.pdb
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.exe
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.exe.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csc.rsp
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.exe
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.exe.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\csi.rsp
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.AppContext.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Console.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.Compression.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Net.Http.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.ValueTuple.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.exe
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.exe.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\vbc.rsp
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\VBCSCompiler.exe
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Antlr3.Runtime.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Calls.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Calls.Media.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Client.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Common.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Core.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Bots.Media.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Newtonsoft.Json.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Buffers.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Memory.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Net.Http.Formatting.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Numerics.Vectors.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Threading.Tasks.Dataflow.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Helpers.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.WebHost.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Mvc.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Optimization.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Razor.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Razor.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\WebGrease.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Antlr3.Runtime.pdb
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Calls.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Calls.Media.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Client.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Common.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Communications.Core.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Graph.Core.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.Skype.Bots.Media.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\NLog.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Buffers.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Memory.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Numerics.Vectors.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Threading.Tasks.Dataflow.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Helpers.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Mvc.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Optimization.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Razor.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.WebPages.Razor.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Newtonsoft.Json.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Net.Http.Formatting.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\System.Web.Http.WebHost.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csprojAssemblyReference.cache
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csproj.CoreCompileInputs.cache
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.csproj.CopyComplete
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.dll
+C:\Users\Murtaza\Desktop\Softech Project\MSTeamsLiveSessionRecordingBott\MSTeamsLiveSessionRecordingBott\obj\Debug\MSTeamsLiveSessionRecordingBott.pdb

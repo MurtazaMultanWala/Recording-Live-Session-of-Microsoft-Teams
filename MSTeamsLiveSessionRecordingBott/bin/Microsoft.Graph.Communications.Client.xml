@@ -1,0 +1,2636 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Graph.Communications.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Graph.Communications.Client.Cache.CacheContext`1">
+            <summary>
+            The stored cache context
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Cache.CacheContext`1.Id">
+            <summary>
+            Gets or sets the context identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Cache.CacheContext`1.TenantId">
+            <summary>
+            Gets or sets the tenant identifier associated with this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Cache.CacheContext`1.ScenarioId">
+            <summary>
+            Gets or sets the scenario identifier associated with this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Cache.CacheContext`1.Resource">
+            <summary>
+            Gets or sets the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Cache.ICache">
+            <summary>
+            The cache interface used to store and recover
+            the data used by the SDK.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ICache.GetDataCollectionAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the resource paths for the children of the collection with
+            the specified resource path asynchronously.
+            Fetching data only happens in HA/DR scenarios, so could take longer.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:Microsoft.Graph.Entity"/> contained in the collection.</typeparam>
+            <param name="properties">The properties.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The recovered collection or child resource paths.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ICache.GetDataAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the serialized string of the data at the specified resource path asynchronously.
+            Fetching data only happens in HA/DR scenarios, so could take longer.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:Microsoft.Graph.Entity"/> to fetch.</typeparam>
+            <param name="properties">The properties.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The recovered serialized data at the specified resource path.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ICache.SetData(Microsoft.Graph.ChangeType,Microsoft.Graph.Communications.Resources.IResource,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Lazy{System.String})">
+            <summary>
+            Sets the data under the specified resource path.
+            These should be short running operations,
+            as they block notification callbacks.
+            </summary>
+            <param name="change">The type of change occuring.</param>
+            <param name="resource">The resource being serialized.</param>
+            <param name="properties">The properties.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="serializedData">
+            The serialized data lazy string.
+            For performance reasons the string is only serialized when requested.
+            </param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Cache.ServiceCache">
+            <summary>
+            The cache that restores the data directly from the service.
+            In this case there is no storage of data, as the service
+            acts as the master.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Common.ObjectRootDisposable" />
+            <seealso cref="T:Microsoft.Graph.Communications.Client.Cache.ICache" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.ISerializer,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Cache.ServiceCache" /> class.
+            </summary>
+            <param name="logger">Logger instance.</param>
+            <param name="client">The client.</param>
+            <param name="serializer">The serializer.</param>
+            <param name="baseUri">The base URI.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.GetDataCollectionAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.GetDataAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.SetData(Microsoft.Graph.ChangeType,Microsoft.Graph.Communications.Resources.IResource,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Lazy{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.GetAsync``1(System.Uri,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.Threading.CancellationToken)">
+            <summary>
+            Gets the content of the specified type.
+            </summary>
+            <typeparam name="T">The type of the content.</typeparam>
+            <param name="resourceUri">The resource URI where to get the content from.</param>
+            <param name="properties">The properties of the request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The retrieved content of the specified type.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Cache.ServiceCache.SaveContent(System.String,System.Collections.Generic.IEnumerable{Microsoft.Graph.Entity})">
+            <summary>
+            Saves the content for the specified resource path.
+            </summary>
+            <param name="resourcePath">The collection resource path.</param>
+            <param name="content">The retrieved content.</param>
+            <returns>
+            The recovered serialized data at the specified resource path.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.CommunicationsClient">
+            <summary>
+            The stateful client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.#ctor(System.String,Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory,Microsoft.Graph.Communications.Client.IOperationManager,Microsoft.Graph.ISerializer,Microsoft.Graph.Communications.Client.Cache.ICache,System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.CommunicationsClient" /> class.
+            </summary>
+            <param name="baseUrl">The base URL.</param>
+            <param name="graphClientFactory">The graph client factory.</param>
+            <param name="operationManager">The operation manager.</param>
+            <param name="serializer">The serializer.</param>
+            <param name="cacheStrategy">The cache strategy.</param>
+            <param name="notificationUri">The notification URI.</param>
+            <exception cref="T:System.ArgumentNullException">
+            If the base URL is null or whitespace.
+            If the graph client is null.
+            If the authentication provider is null.
+            </exception>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.CommunicationsClient.OnNotificationProcessed">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.CommunicationsClient.OnNotificationQueued">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.CommunicationsClient.OnNotificationException">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.AppName">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.AppId">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.BaseUrl">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.GraphLogger">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.GraphClient">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.AuthenticationProvider">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.GraphClientFactory">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.NotificationDispatcher">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.OperationManager">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.Serializer">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.DefaultCache">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClient.NotificationUrl">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.ProcessNotifications(System.Uri,Microsoft.Graph.CommsNotifications,System.String,System.Guid,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.RehydrateAsync(System.String,System.String,System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.GetOrAddResourceCollection``1(System.Boolean,System.Func{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.TerminateAsync(System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClient.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder">
+            <inheritdoc />
+            <summary>
+            The class the provides the builder for stateful client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.#ctor(System.String,System.String,Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,Microsoft.Graph.Communications.Common.Telemetry.Obfuscation.ObfuscationMember[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder"/> class.
+            </summary>
+            <param name="appName">Name of the application.</param>
+            <param name="appId">The application identifier.</param>
+            <param name="logger">The logger</param>
+            <param name="additionalObfuscationMembers">Additional members to obfuscate.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.#ctor(System.String,System.String,Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,Microsoft.Graph.Communications.Common.Telemetry.Obfuscation.ObfuscationConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder" /> class.
+            </summary>
+            <param name="appName">Name of the application.</param>
+            <param name="appId">The application identifier.</param>
+            <param name="logger">The logger</param>
+            <param name="obfuscationConfiguration">The obfuscation configuration.</param>
+            <exception cref="T:System.ArgumentNullException">appId</exception>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.Id">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.Build">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetAuthenticationProvider(Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetNotificationUrl(System.Uri)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetServiceBaseUrl(System.Uri)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetHttpClient(System.Net.Http.HttpClient,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetCacheStrategy(Microsoft.Graph.Communications.Client.Cache.ICache)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.SetOperationManager(Microsoft.Graph.Communications.Client.IOperationManager)">
+            <summary>
+            Sets the operation manager.
+            </summary>
+            <param name="manager">The input operation manager.</param>
+            <returns>This <see cref="T:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder"/> object.</returns>
+            <exception cref="T:System.ArgumentNullException">If the manager is null.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.CreateObfuscationConfiguration(Microsoft.Graph.Communications.Common.Telemetry.Obfuscation.ObfuscationMember[])">
+            <summary>
+            Creates an obfuscation configuration ignoring specific types.
+            </summary>
+            <param name="additionalMembers">Additional members to obfuscate.</param>
+            <returns>The obfuscation configuration.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientBuilder.MergeMembers(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Telemetry.Obfuscation.ObfuscationMember},System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Telemetry.Obfuscation.ObfuscationMember})">
+            <summary>
+            Merges the members into a new array of unique members.
+            </summary>
+            <param name="members1">The first member enumeration.</param>
+            <param name="members2">The second member enumeration.</param>
+            <returns>The merged member enumeration.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.CommunicationsClientExtensions">
+            <summary>
+            Extensions for Stateful Client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientExtensions.ProcessNotificationAsync(Microsoft.Graph.Communications.Client.ICommunicationsClient,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Processes the notifications and raises the required callbacks.
+            This function should be called in order for the SDK to raise
+            any required events and process state changes.
+            </summary>
+            <param name="client">The stateful client.</param>
+            <param name="request">The http request that is incoming from service.</param>
+            <returns>
+            Http Response Message after processed by the SDK. This has to
+            be returned to the server.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientExtensions.LogAndCreateResponse(Microsoft.Graph.Communications.Client.ICommunicationsClient,System.Net.Http.HttpRequestMessage,System.Guid,System.Guid,Microsoft.Graph.CommsNotifications,System.Net.HttpStatusCode,System.Diagnostics.Stopwatch,System.Exception)">
+            <summary>
+            Logs the request, creates the response, and logs the response.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="requestId">The request identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="notifications">The notifications that were extracted.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="stopwatch">The stopwatch tracking how long the request is taking.</param>
+            <param name="exception">Any exceptions raised.</param>
+            <returns>The response for the associated request.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.CommunicationsClientExtensions.CreateResponse(Microsoft.Graph.Communications.Client.ICommunicationsClient,System.Net.HttpStatusCode,System.Guid,System.Guid,System.Object)">
+            <summary>
+            Creates the response.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="requestId">The request identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="responseContent">The response content.</param>
+            <returns>
+            The HTTP response.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.GraphClientExtensions">
+            <summary>
+            The base request extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.SendAsync``1(Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.IBaseRequest,Microsoft.Graph.Communications.Common.Transport.RequestType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends the request asynchronously.
+            </summary>
+            <typeparam name="T"><see cref="T:System.Type" /> of the content present in the response.</typeparam>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="requestType">Type of the request.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" /> returning the generic type.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.SendAsync(Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.IBaseRequest,Microsoft.Graph.Communications.Common.Transport.RequestType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends the request asynchronously.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="requestType">Type of the request.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.SendAsync(Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.IBaseRequest,Microsoft.Graph.Communications.Common.Transport.RequestType,System.String,System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends the request asynchronously.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="requestType">Type of the request.</param>
+            <param name="tenantId">The tenant identitifer.</param>
+            <param name="scenarioId">The scenario identitifer.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.CreateGraphRequest(Microsoft.Graph.IBaseRequest,Microsoft.Graph.Communications.Common.Transport.RequestType,System.String)">
+            <summary>
+            Creates the graph request.
+            This is used to convert the wire level `RequestBody` object to a
+            generic <see cref="T:System.Collections.Generic.IDictionary`2" /> to avoid serializing
+            the `@odata.type` attribute.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="requestType">Type of the request.</param>
+            <param name="clientContext">The client context.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphRequest`1" /> from the given <see cref="T:Microsoft.Graph.IBaseRequest" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.ToDictionary(Microsoft.Graph.IBaseRequest)">
+            <summary>
+            Converts the request to a dictionary.
+            This is used to convert the wire level `RequestBody` object to a
+            generic <see cref="T:System.Collections.Generic.IDictionary`2" /> to avoid serializing
+            the `@odata.type` attribute.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IDictionary`2" /> from the given object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.GraphClientExtensions.ToDictionary(System.Object)">
+            <summary>
+            Converts the object to a dictionary.
+            This is used to convert the wire level `RequestBody` object to a
+            generic <see cref="T:System.Collections.Generic.IDictionary`2" /> to avoid serializing
+            the `@odata.type` attribute.
+            </summary>
+            <param name="requestBody">Type request body.</param>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IDictionary`2" /> from the given object.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions">
+            <summary>
+            The reader writer lock extensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInReadLock``1(System.Threading.ReaderWriterLockSlim,System.Func{``0})">
+            <summary>
+            Runs the specified action in a read lock.
+            </summary>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+            <returns>
+            The executed action result.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">The state manager has already been disposed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInReadLock(System.Threading.ReaderWriterLockSlim,System.Action)">
+            <summary>
+            Runs the specified action in a read lock.
+            </summary>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+            <exception cref="T:System.ObjectDisposedException">The state manager has already been disposed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInUpgradableReadLock``1(System.Threading.ReaderWriterLockSlim,System.Func{``0})">
+            <summary>
+            Runs the specified action in an upgradable read lock.
+            </summary>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+            <returns>
+            The executed action result.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">The state manager has already been disposed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInUpgradableReadLock(System.Threading.ReaderWriterLockSlim,System.Action)">
+            <summary>
+            Runs the specified action in an upgradable read lock.
+            </summary>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+            <exception cref="T:System.ObjectDisposedException">The state manager has already been disposed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInWriteLock``1(System.Threading.ReaderWriterLockSlim,System.Func{``0})">
+            <summary>
+            Runs the specified action in write lock.
+            </summary>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+            <returns>
+            The executed action result.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">The state manager has already been disposed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ReaderWriterLockSlimExtensions.RunInWriteLock(System.Threading.ReaderWriterLockSlim,System.Action)">
+            <summary>
+            Runs the specified action in write lock.
+            </summary>
+            <param name="lock">The lock.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.ICommunicationsClient">
+            <summary>
+            The CommunicationsClient interface. This is the entry point of
+            the SDK and a reference to this instance must be held
+            for the duration of the session.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.ICommunicationsClient.OnNotificationProcessed">
+            <summary>
+            Occurs when the notification has been processed by all callbacks.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.ICommunicationsClient.OnNotificationQueued">
+            <summary>
+            Occurs when the notification has been queued into the backlog.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.ICommunicationsClient.OnNotificationException">
+            <summary>
+            Occurs when exceptions are raised on notification callbacks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.Id">
+            <summary>
+            Gets the client identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.AppName">
+            <summary>
+            Gets the name of the application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.AppId">
+            <summary>
+            Gets the application identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.BaseUrl">
+            <summary>
+            Gets the Graph service's base URL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.GraphLogger">
+            <summary>
+            Gets the graph logger.
+            This is the logger used within the SDK.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.GraphClient">
+            <summary>
+            Gets the graph client.
+            This is the Client used to communicate with
+            the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.AuthenticationProvider">
+            <summary>
+            Gets the authentication provider used to authenticate
+            both inbound and outbound requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClient.Serializer">
+            <summary>
+            Gets the serializer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClient.ProcessNotifications(System.Uri,Microsoft.Graph.CommsNotifications,System.String,System.Guid,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Processes the notifications and raise the required callbacks.
+            This function should be called in order for the SDK to raise
+            any required events and process state changes.
+            </summary>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="notifications">The notifications.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="requestId">The request identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="additionalData">Additional data associated with the notification.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClient.RehydrateAsync(System.String,System.String,System.Guid)">
+            <summary>
+            Re-hydrates the resource at the specified path asynchronously.
+            </summary>
+            <param name="resourcePath">The resource path.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClient.TerminateAsync(System.TimeSpan)">
+            <summary>
+            Terminates this client asynchronously.
+            This terminates all the calls, waits for dispose events, and disposes everything.
+            </summary>
+            <param name="timeout">The timeout.</param>
+            <returns>
+            True if all instances terminated successfully, false otherwise.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder">
+            <summary>
+            The builder object that builds the <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClient"/>.
+            Use this class to setup the SDK's configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.Id">
+            <summary>
+            Gets the client id.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.Build">
+            <summary>
+            Build and return the stateful client object.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClient"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">Cannot build the client without setting the required parameters.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.SetAuthenticationProvider(Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider)">
+            <summary>
+            Sets the custom authentication provider.
+            The authentication provider would add authentication to outbound requests
+            and validates any inbound requests. See <see cref="T:Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider"/>
+            </summary>
+            <param name="provider">The authentication provider.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="provider" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.SetNotificationUrl(System.Uri)">
+            <summary>
+            Set the notification uri for your bot.
+            This is the default notification url for the bot. This can
+            be overriden on a per-resource basis depending on the API support.
+            </summary>
+            <param name="notificationUrl">The callback Url.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="notificationUrl" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException">URI must be https.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.SetServiceBaseUrl(System.Uri)">
+            <summary>
+            Sets the service base URL. This set's the Endpoint URL for the service.
+            </summary>
+            <param name="serviceBaseUrl">The place call endpoint URL.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="serviceBaseUrl" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException">URI must be https.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.SetHttpClient(System.Net.Http.HttpClient,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Sets the http client.
+            Use a custom HTTP Client instead of the one generated
+            by the SDK.
+            </summary>
+            <param name="httpClient">The place call endpoint URL.</param>
+            <param name="defaultHeaders">The default headers.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="httpClient" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder.SetCacheStrategy(Microsoft.Graph.Communications.Client.Cache.ICache)">
+            <summary>
+            Sets the cache strategy.
+            </summary>
+            <param name="cacheStrategy">The cache strategy.</param>
+            <returns>
+            This <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClientBuilder"/> object.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="cacheStrategy" /> strategy is <see langword="null" />.</exception>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient">
+            <summary>
+            The internal <see cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClient"/>.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Client.ICommunicationsClient" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.GraphClientFactory">
+            <summary>
+            Gets the graph client factory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.NotificationDispatcher">
+            <summary>
+            Gets the notification dispatcher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.OperationManager">
+            <summary>
+            Gets the operation manager.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.DefaultCache">
+            <summary>
+            Gets the default cache.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.NotificationUrl">
+            <summary>
+            Gets the notification URL.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IInternalCommunicationsClient.GetOrAddResourceCollection``1(System.Boolean,System.Func{``0})">
+            <summary>
+            Returns the value using typeof(T) as the key. If no such value is present.
+            Adds it by calling the passed function.
+            </summary>
+            <typeparam name="T">The resource collection type to be added to the collection.</typeparam>
+            <param name="maintainState">if set to <c>true</c> maintain state.</param>
+            <param name="valueFactory">The function used to create the value</param>
+            <returns>
+            Resource Collection associated with the passed in value type
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.IOperationManager">
+            <summary>
+            The OperationManager interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IOperationManager.ProcessNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Processes the specified notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>]
+            <returns><c>true</c> if the notificaction was a valid processed operation, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IOperationManager.WaitForCompletionAsync``1(System.String,System.Func{System.String,System.Threading.Tasks.Task{``0}},System.Nullable{System.TimeSpan},System.Action{``0},System.String,System.Threading.CancellationToken)">
+            <summary>
+            The validate and wait for completion.
+            </summary>
+            <typeparam name="T">The type of operation to be waited on.</typeparam>
+            <param name="resource">The resource the operation is associated with.</param>
+            <param name="performAction">The perform action function.</param>
+            <param name="operationTimeoutValue">The timeout value specified for this operation.</param>
+            <param name="updateFunction">Function to be called in case of update operation.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task`1" /> contains the completed <see cref="T:Microsoft.Graph.CommsOperation" />.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">Throws exception if the completion type is mismatched or operation id returned is empty.</exception>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.IPagedList`1">
+            <summary>
+            The paged list interface.
+            </summary>
+            <typeparam name="T">The type of object to page.</typeparam>
+            <seealso cref="T:System.Collections.Generic.IList`1" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IPagedList`1.Value">
+            <summary>
+            Gets or sets the value in the current page of the list.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IPagedList`1.AdditionalData">
+            <summary>
+            Gets or sets the additional data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IPagedList`1.NextLinkUrl">
+            <summary>
+            Gets the next link URL taken from @odata.nextLink.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.IStateManager`1">
+            <summary>
+            The state manager interface.
+            This object is responsible for storing the resources in memory.
+            </summary>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.IStateManager`1.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/> with the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IStateManager`1.Remove(System.String)">
+            <summary>
+            Removes the resource with the specified id from the state manager.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /> that was removed.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IStateManager`1.TryRemove(System.String,`0@)">
+            <summary>
+            Tries to remove the resource with the specified id.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="resource">The resource.</param>
+            <returns><b>true</b> if the <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/> was removed, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IStateManager`1.CopyContent">
+            <summary>
+            Copies the content contained by this instance.
+            </summary>
+            <returns>The copied <see cref="T:System.Collections.Generic.ICollection`1"/></returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IStateManager`1.GetOrAdd(System.String,System.Func{`0})">
+            <summary>
+            Gets the resource with the specified id if it exists in the collection,
+            otherwise executes the resource factory to create the resource.
+            State manager does not guarantee that the resource factory is executed
+            only once, so operations must be idempotent (I.E. GET, PUT, etc...).
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="resourceFactory">The resource factory.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/> that was found or created.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.IStateManager`1.GetOrAddAsync(System.String,System.Func{System.Threading.Tasks.Task{`0}})">
+            <summary>
+            Gets the resource with the specified id if it exists in the collection,
+            otherwise executes the resource factory to create the resource.
+            State manager does not guarantee that the resource factory is executed
+            only once, so operations must be idempotent (I.E. GET, PUT, etc...).
+            This method supports asynchronously creating the resource.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="resourceFactory">The resource factory.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/> that was found or created.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer">
+            <summary>
+            Container that manages multiple notification dispatchers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer"/> class.
+            </summary>
+            <param name="logger">Logger instance.</param>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.OnNotificationIncoming">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.OnNotificationProcessed">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.OnNotificationQueued">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.OnNotificationException">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.ProcessNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.CompleteNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.ProcessNotificationAndWaitAsync(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.Subscribe(System.String,Microsoft.Graph.Communications.Client.Notifications.INotificationCallback,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.RegisterDispatcherGetOrAdd(System.String,System.Func{Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher})">
+            <summary>
+            Registers the dispatcher if it doesn't exist and returns it.
+            </summary>
+            <param name="baseUrl">The base URL.</param>
+            <param name="dispatcher">The function that provides the dispatcher.</param>
+            <returns>The dispatcher instance</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.ProcessedNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Process Notification
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.QueuedNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Queued Notification
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.FailedNotification(Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs)">
+            <summary>
+            Failed Notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.DispatcherContainer.ReceivedNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Incoming notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1">
+            <summary>
+            A class that implements a fixed size list.
+            </summary>
+            <typeparam name="T">The generic type</typeparam>
+            <seealso cref="T:System.Collections.Generic.ICollection`1" />
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.maxSize">
+            <summary>
+            The maximum size of the queue.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.syncLock">
+            <summary>
+            Gets the synchronize lock.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1"/> class.
+            </summary>
+            <param name="maxSize">The maximum size.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.Count">
+            <summary>
+            Gets the number of elements in the collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.ObjectList">
+            <summary>
+            Gets the object list.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.Enqueue(`0)">
+            <summary>
+            Enqueues the item.
+            </summary>
+            <param name="item">The object.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.Remove(`0)">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.FixedSizeQueue`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher">
+            <summary>
+            The notification dispatcher is the element that dispatches
+            notifications to required collections or stateful resources.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.OnNotificationIncoming">
+            <summary>
+            Occurs when a new notification comes in.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.OnNotificationProcessed">
+            <summary>
+            Occurs when the notification has been processed by all callbacks.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.OnNotificationQueued">
+            <summary>
+            Occurs when the notification has been queued into the backlog.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.OnNotificationException">
+            <summary>
+            Exceptions raised when invoking callbacks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.ProcessNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Processes the specified notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.ProcessNotificationAndWaitAsync(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs,System.TimeSpan)">
+            <summary>
+            Processes the notification and waits till processed asynchronously.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" /> instance containing the event data.</param>
+            <param name="timeout">The timeout.  If not specified a default of 30 seconds is used.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher.Subscribe(System.String,Microsoft.Graph.Communications.Client.Notifications.INotificationCallback,System.Boolean)">
+            <summary>
+            Subscribes the callback for the notifications for the specified resource.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="callback">
+            The callback object that is called when a notification is received for the specified resource.
+            If this object is garbage collected the subscription will automatically be deleted.
+            The resource/callback pair must be unique.
+            </param>
+            <param name="ignoreBacklog">If true, ignores the notifications in the backlog.</param>
+            <returns>
+            The <see cref="T:System.IDisposable"/> object that can be used to unsubscribe.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.INotificationCallback">
+            <summary>
+            The callback implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationCallback.NotificationReceived(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Triggered when a resource notification is received.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcherContainer">
+            <summary>
+            The notification dispatcher is the element that dispatches
+            notifications to required collections or stateful resources.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcherContainer.RegisterDispatcherGetOrAdd(System.String,System.Func{Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher})">
+            <summary>
+            Registers the dispatcher if it doesn't exist and returns it.
+            </summary>
+            <param name="baseUrl">The base URL.</param>
+            <param name="dispatcher">The function that provides the dispatcher.</param>
+            <returns>The dispatcher instance</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcherContainer.CompleteNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Complete the specified notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher">
+            <summary>
+            The standard notification dispatcher.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Client.Notifications.INotificationDispatcher" />
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.completionCallbacks">
+            <summary>
+            The completion callbacks
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.notificationQueues">
+            <summary>
+            The notification queues
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.backlogQueue">
+            <summary>
+            Gets the backlog queue that contains notifications that
+            have not been processed yet.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.maxDepth">
+            <summary>
+            The maximum depth
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.subscribeLock">
+            <summary>
+            The backlog lock.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="backlogSize">Size of the backlog.</param>
+            <param name="maxDepth">The maximum depth for a queue.
+            Queues will only be created for resources with a depth less than maxDepth.
+            Resources with a depth higher than maxDepth will be redirected.
+            I.E. with a depth of 3:
+            /communications/calls will have a queue.
+            /communications/calls/id will have a queue.
+            /communications/calls/id/participants will be directed to the /communications/calls/id queue.
+            </param>
+            <exception cref="T:System.ArgumentNullException">If the processor is null.</exception>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.OnNotificationIncoming">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.OnNotificationProcessed">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.OnNotificationQueued">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.OnNotificationException">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Backlog">
+            <summary>
+            Gets the backlog.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Keys">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue"/> with the specified resource.
+            </summary>
+            <value>
+            The <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue"/>.
+            </value>
+            <param name="resource">The resource.</param>
+            <returns>The notification queue for the specified resource.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.ContainsKey(System.String)">
+            <summary>
+            Determines whether the read-only dictionary contains an element that has the specified key.
+            </summary>
+            <param name="key">The key to locate.</param>
+            <returns>
+            true if the read-only dictionary contains an element that has the specified key; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.TryGetValue(System.String,Microsoft.Graph.Communications.Client.Notifications.NotificationQueue@)">
+            <summary>
+            Gets the value that is associated with the specified key.
+            </summary>
+            <param name="key">The key to locate.</param>
+            <param name="value">When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter. This parameter is passed uninitialized.</param>
+            <returns>
+            true if the object that implements the <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"></see> interface contains an element that has the specified key; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,Microsoft#Graph#Communications#Client#Notifications#NotificationQueue}}#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.ProcessNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.ProcessNotificationAndWaitAsync(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Subscribe(System.String,Microsoft.Graph.Communications.Client.Notifications.INotificationCallback,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Clean">
+            <summary>
+            Cleans this instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.RaiseCallbackException(Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs)">
+            <summary>
+            Raises the notification exception event.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.FailedNotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.RaiseNotificationProcessed(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Raises the notification processed event.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.RemoveQueue(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Removes the queue associated with the specified arguments.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.GetRootQueueUnsafe(System.String)">
+            <summary>
+            Get the root queue for the given resource.
+            This method is thread unsafe, and should be should be called with care.
+            </summary>
+            <param name="resource">The resource for which a notifier is required.</param>
+            <returns>
+            The notifier that has been retrieved or created.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.GetOrCreateRootQueueUnsafe(System.String)">
+            <summary>
+            Gets or creates the root queue for the given resource.
+            </summary>
+            <param name="resource">The resource.</param>
+            <returns>
+            The notifier that has been retrieved or created.
+            </returns>
+            <exception cref="T:System.ArgumentException">Cannot subscribe to a resource without defining a root resource. - resource</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.RaiseNotificationQueued(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Raises the notification queued event.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.GetResource(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Gets the resource from the specified argument.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+            <returns>The sanitized resource.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.StripResourceId(System.String)">
+            <summary>
+            Strips the resource identifier.
+            </summary>
+            <param name="requestUrl">The request URL.</param>
+            <returns>Url with stripped resource id.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.Unsubscribe(System.String,System.String,System.Guid)">
+            <summary>
+            Unsubscribes the callback from the specified queue.
+            If this callback is the last one in a <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue"/>, the queue will be deleted.
+            </summary>
+            <param name="queueId">The queue identifier.</param>
+            <param name="resource">The resource.</param>
+            <param name="callbackId">The callback identifier.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.DispatchSubscription">
+            <summary>
+            The disposable subscription object.
+            Disposing removes the subscription from the dispatcher.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.DispatchSubscription.#ctor(Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher,System.String,System.String,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.DispatchSubscription" /> struct.
+            </summary>
+            <param name="dispatcher">The dispatcher.</param>
+            <param name="queueId">The queue identifier.</param>
+            <param name="resource">The resource.</param>
+            <param name="callbackId">The callback identifier.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher.DispatchSubscription.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            In this case disposing of this subscription will unsubscribe the callback from the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher"/>.
+            If this callback is the last one in a <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue"/>, the queue will be deleted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue">
+            <summary>
+            The class that dispatches and processes notifications
+            for a subset of resources.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.notificationQueue">
+            <summary>
+            Gets the notification queue for this ResourceUrl.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.callbacks">
+            <summary>
+            Gets the callbacks for the child resources.
+            This is a mapping from resource id to list of callbacks which
+            are stored as callback and its wrapper.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.dispatcherLock">
+            <summary>
+            The dispatcher lock.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.dispatcherTask">
+            <summary>
+            Gets or sets the dispatcher.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,System.String,Microsoft.Graph.Communications.Client.Notifications.NotificationDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue" /> class.
+            </summary>
+            <param name="logger">Logger instance.</param>
+            <param name="id">The identifier.</param>
+            <param name="parent">The parent.</param>
+            <exception cref="T:System.ArgumentNullException">If client is null.</exception>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Id">
+            <summary>
+            Gets the identifier of the queue.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Count">
+            <summary>
+            Gets the count.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.DispatcherCancellationSource">
+            <summary>
+            Gets the cancellation token that can cancel
+            the dispatcher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Parent">
+            <summary>
+            Gets a weak reference to the parent to trigger events.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:System.Collections.Generic.IReadOnlyList`1"/> with the specified resource.
+            </summary>
+            <value>
+            The <see cref="T:System.Collections.Generic.IReadOnlyList`1"/>.
+            </value>
+            <param name="resource">The resource.</param>
+            <returns>The <see cref="T:System.Collections.Generic.IReadOnlyList`1"/> with the specified resource.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.RegisterCallback(System.String,System.Guid,Microsoft.Graph.Communications.Client.Notifications.INotificationCallback)">
+            <summary>
+            Registers the callback.
+            </summary>
+            <param name="resource">The resource to be registered to.</param>
+            <param name="id">The identifier.</param>
+            <param name="callback">The callback.</param>
+            <exception cref="T:System.ArgumentException">Trying to register the same object multiple times.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.UnregisterCallback(System.String,System.Guid)">
+            <summary>
+            Unregister callback.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="id">The identifier.</param>
+            <returns>
+              <c>True</c> if the notifier should be removed.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.StartDispatch">
+            <summary>
+            Starts the dispatching of notifications if not
+            already started.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Contains(System.String)">
+            <summary>
+            Checks if this queue contains a callback for the specified resource.
+            </summary>
+            <param name="resource">The resource</param>
+            <returns>
+            True if the queue contains a callback, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.QueueNotification(System.String,Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Queues the notification.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.RemoveStaleCallbacks">
+            <summary>
+            Removes the stale callbacks from this instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.StartLoopAsync">
+            <summary>
+            Start the looping thread processing new notifications.
+            </summary>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.ProcessNotification(System.String,Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Processes the notification.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.NotificationCallback">
+            <summary>
+            The notification callback class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.NotificationCallback.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Notifications.NotificationQueue.NotificationCallback.Callback">
+            <summary>
+            Gets or sets the callback.
+            This is a weak reference, so we don't hold onto the object if no one else does.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.OperationManager">
+            <summary>
+            The operation manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.OperationManager" /> class.
+            </summary>
+            <param name="logger">Logger instance.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.DefaultTimeout">
+            <summary>
+            Gets or sets the default timeout for operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.Content">
+            <summary>
+            Gets the content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.Contains(System.String)">
+            <summary>
+            Determines whether this instance contains the specified client context.
+            </summary>
+            <param name="clientContext">The client context.</param>
+            <returns>
+              <c>true</c> if this instance contains the specified client context; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.ProcessNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.WaitForCompletionAsync``1(System.String,System.Func{System.String,System.Threading.Tasks.Task{``0}},System.Nullable{System.TimeSpan},System.Action{``0},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.ProcessOperationNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Processes the operation notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" /> instance containing the event data.</param>
+            <returns><c>true</c> if the notificaction was a valid processed operation, <c>false</c> otherwise.</returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the incoming operation is invalid.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.ProcessDeletedNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Processes the deleted notification.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.ValidateOperation(System.String,Microsoft.Graph.CommsOperation)">
+            <summary>
+            Validates the operation.
+            </summary>
+            <param name="clientContext">The client context.</param>
+            <param name="operation">The operation.</param>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">Throws a service exception if</exception>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer">
+            <summary>
+            The completion container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.#ctor(System.String,System.String,System.Threading.Tasks.TaskCompletionSource{Microsoft.Graph.CommsOperation},System.DateTimeOffset,System.Action{Microsoft.Graph.CommsOperation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer" /> class.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="clientContext">The client context to identify the operaion.</param>
+            <param name="completionSource">The completion source.</param>
+            <param name="timeoutInstant">Timeout instant for this container</param>
+            <param name="updateFunction">The update function.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.ResourceUrl">
+            <summary>
+            Gets the resource associated with this operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.OperationId">
+            <summary>
+            Gets the operation id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.CompletionSource">
+            <summary>
+            Gets the completion source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.TimeoutInstant">
+            <summary>
+            Gets the timeout instant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.OperationManager.CompletionContainer.UpdateFunction">
+            <summary>
+            Gets the update function.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.PagedList`1">
+            <summary>
+            An object that contains paginated list of
+            the generic type T.
+            </summary>
+            <typeparam name="T">The type of Paged List.</typeparam>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.PagedList`1.Value">
+            <summary>
+            Gets or sets the value in the current page of the list.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.PagedList`1.AdditionalData">
+            <summary>
+            Gets or sets the additional data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.PagedList`1.NextLinkUrl">
+            <summary>
+            Gets the next link URL taken from @odata.nextLink.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.PagedList`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.PagedList`1.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.PagedList`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.PagedList`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.StateManager`2">
+            <summary>
+            The state manager implementation.
+            </summary>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+            /// <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Client.IStateManager`1" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.#ctor(Microsoft.Graph.ISerializer,Microsoft.Graph.Communications.Client.Cache.ICache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.StateManager`2"/> class.
+            </summary>
+            <param name="serializer">The serializer.</param>
+            <param name="cache">The cache.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.StateManager`2.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.StateManager`2.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.StateManager`2.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the resource already exists in the collection.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.GetOrAdd(System.String,System.Func{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.GetOrAddAsync(System.String,System.Func{System.Threading.Tasks.Task{`0}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Contains(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.CopyTo(`0[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.CopyContent">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Remove(System.String)">
+            <summary>
+            Removes the occurrence of a specific object from the <see cref="T:Microsoft.Graph.Communications.Client.IStateManager`1"/>.
+            </summary>
+            <param name="id">The identifier of the object to remove from the <see cref="T:Microsoft.Graph.Communications.Client.IStateManager`1"/>.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Resources.IResource" /> that was removed.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the resource does not exist in the collection.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Remove(`0)">
+            <summary>
+            Removes the occurrence of a specific object from the <see cref="T:Microsoft.Graph.Communications.Client.IStateManager`1"/>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:Microsoft.Graph.Communications.Client.IStateManager`1"/>.</param>
+            <returns>
+            true if <paramref name="item">item</paramref> was successfully removed from the <see cref="T:Microsoft.Graph.Communications.Client.IStateManager`1"/>.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the resource does not exist in the collection.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.TryRemove(System.String,`0@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.RaiseResourceExistsException(System.String)">
+            <summary>
+            Raises the resource already exists exception.
+            </summary>
+            <param name="id">The resource id.</param>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the resource already exists in the call collection.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.StateManager`2.RaiseResourceDoesNotExistException(System.String)">
+            <summary>
+            The raise call does not exist exception.
+            </summary>
+            <param name="id">The identifier.</param>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the call does not exists in the call collection.</exception>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient">
+            <summary>
+            The graph auth client.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Common.Transport.GraphHttpClient" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,Newtonsoft.Json.JsonSerializerSettings,System.Net.Http.HttpClient,Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider,System.Net.Http.Headers.ProductInfoHeaderValue,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="jsonSerializerSettings">The json serializer settings.</param>
+            <param name="httpClient">The HTTP client.</param>
+            <param name="authenticationProvider">The authentication provider.</param>
+            <param name="userAgent">The user agent.</param>
+            <param name="defaultProperties">The default properties.</param>
+            <exception cref="T:System.ArgumentNullException">If the authentication provider is null.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient.SendHttpRequestAsync``2(Microsoft.Graph.Communications.Common.Transport.IGraphRequest{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient.ValidateResponseAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Validates the response asynchronously.
+            </summary>
+            <param name="response">The response.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If we have a failure response.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClient.ConvertErrorResponseAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Converts the <see cref="T:System.Net.Http.HttpRequestException"/> into an <see cref="T:Microsoft.Graph.ErrorResponse"/> object;
+            </summary>
+            <param name="response">The <see cref="T:System.Net.Http.HttpResponseMessage"/> to convert.</param>
+            <returns>The <see cref="T:Microsoft.Graph.ErrorResponse"/> object.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory">
+            <summary>
+            The HTTP graph client factory.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Common.ObjectRoot" />
+            <seealso cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphClientFactory" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory.#ctor(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger,Newtonsoft.Json.JsonSerializerSettings,Microsoft.Graph.Communications.Client.Authentication.IRequestAuthenticationProvider,System.Net.Http.Headers.ProductInfoHeaderValue,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory" /> class.
+            </summary>
+            <param name="logger">Logger instance.</param>
+            <param name="jsonSerializerSettings">The json serializer settings.</param>
+            <param name="authenticationProvider">The authentication provider.</param>
+            <param name="userAgent">The user agent.</param>
+            <param name="defaultProperties">The default properties.</param>
+            <param name="httpClient">The HTTP client.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory.GraphLogger">
+            <summary>
+            Gets the graph logger.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory.AuthenticationProvider">
+            <summary>
+            Gets the authentication provider.
+            </summary>
+            <value>
+            The authentication provider.
+            </value>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphAuthClientFactory.Create(Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphClient"/>.
+            </summary>
+            <param name="logger">An optional <see cref="T:Microsoft.Graph.Communications.Common.Telemetry.IGraphLogger"/> logger
+            to be used in the new <see cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphClient"/>.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphClient"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Transport.GraphClientContext">
+            <summary>
+            The context for the graph client wrapper.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphClientContext.TenantId">
+            <summary>
+            Gets or sets the tenant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphClientContext.ScenarioId">
+            <summary>
+            Gets or sets the scenario identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper">
+            <summary>
+            The graph client wrapper.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.#ctor(Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.Communications.Client.Transport.GraphClientContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper" /> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.Context">
+            <summary>
+            Gets the context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.GraphLogger">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.DefaultProperties">
+            <summary>
+            Gets the default properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.SendAsync``1(Microsoft.Graph.Communications.Common.Transport.IGraphRequest{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.SendAsync``2(Microsoft.Graph.Communications.Common.Transport.IGraphRequest{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.ValidateAndWrapAsync``1(Microsoft.Graph.Communications.Client.Transport.GraphClientContext,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Validates the function executed, wraps any resulting exceptions, and attaches extra context.
+            </summary>
+            <typeparam name="T">The return type of the validation function.</typeparam>
+            <param name="context">The context.</param>
+            <param name="func">The function.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task`1" />
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">That wraps any exception triggered and attaches extra context.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Client.Transport.GraphClientWrapper.AttachContext(Microsoft.Graph.ServiceException,Microsoft.Graph.Communications.Client.Transport.GraphClientContext)">
+            <summary>
+            Attach context to the specified <see cref="T:Microsoft.Graph.ServiceException"/> <see cref="T:Microsoft.Graph.Error"/>.
+            </summary>
+            <param name="exception">The exception from which to get the <see cref="T:Microsoft.Graph.Error"/>.</param>
+            <param name="context">The context to attach to the exception <see cref="T:Microsoft.Graph.Error"/>.</param>
+            <returns>The <see cref="T:Microsoft.Graph.Error"/> with extra context.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.CollectionEventHandler`2">
+            <summary>
+            The call collection event handler delegate.
+            </summary>
+            <typeparam name="TSender">The type of the sender.</typeparam>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1">
+            <summary>
+            The collection event arguments.
+            </summary>
+            <typeparam name="TResource">
+            The containing stateful resource type.
+            <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/>
+            </typeparam>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.#ctor(System.String,System.Collections.Generic.ICollection{`0},System.Collections.Generic.ICollection{`0},System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1" /> class.
+            </summary>
+            <param name="resourcePath">The resource path.</param>
+            <param name="addedResources">The added resources.</param>
+            <param name="updatedResources">The updated resources.</param>
+            <param name="removedResources">The removed resources.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.AddedResources">
+            <summary>
+            Gets the added resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.UpdatedResources">
+            <summary>
+            Gets the updated resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.RemovedResources">
+            <summary>
+            Gets the removed resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.ResourcePath">
+            <summary>
+            Gets the resource path for the collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.CollectionEventArgs`1.AdditionalData">
+            <summary>
+            Gets or sets the additional data for the event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.InternalRehydrationExtensions">
+            <summary>
+            Internal communications client extensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalRehydrationExtensions.RehydrateCollectionAsync``2(Microsoft.Graph.Communications.Resources.IInternalResourceCollection{``0,``1},System.String,System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Re-hydrates the resource at the specified path asynchronously.
+            </summary>
+            <typeparam name="TResource">The type of the re-hydrated resource.</typeparam>
+            <typeparam name="TEntity">The type of the re-hydrated entity.</typeparam>
+            <param name="resourceCollection">The resource collection to re-hydrate.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The collection of rehydrated resources.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalRehydrationExtensions.RehydrateCollectionContentAsync``2(Microsoft.Graph.Communications.Resources.IInternalResourceCollection{``0,``1},System.Collections.Generic.List{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.Threading.CancellationToken)">
+            <summary>
+            Re-hydrates the content of this collection asynchronously.
+            </summary>
+            <typeparam name="TResource">The type of the re-hydrated resource.</typeparam>
+            <typeparam name="TEntity">The type of the re-hydrated entity.</typeparam>
+            <param name="resourceCollection">The resource collection.</param>
+            <param name="properties">The properties.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The re-hydrated resources.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalRehydrationExtensions.RehydrateCollectionChildAsync``2(Microsoft.Graph.Communications.Resources.IInternalResourceCollection{``0,``1},System.String,System.Collections.Generic.List{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.Threading.CancellationToken)">
+            <summary>
+            Re-hydrates the child of this collection asynchronously.
+            </summary>
+            <typeparam name="TResource">The type of the re-hydrated resource.</typeparam>
+            <typeparam name="TEntity">The type of the re-hydrated entity.</typeparam>
+            <param name="resourceCollection">The resource collection.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="properties">The properties.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The re-hydrated resource.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalRehydrationExtensions.GetEntityAsync``1(Microsoft.Graph.Communications.Resources.IInternalResourceBase,System.String,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.Threading.CancellationToken)">
+            <summary>
+            Gets the entity associated with the specified resource path.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="resource">The resource.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="properties">The properties.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The deserialized <typeparamref name="TEntity"/> entity for the specified <paramref name="resourcePath"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.InternalResourceExtensions">
+            <summary>
+            Stateful resource extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.SendRequestAndWaitForCompletionAsync``1(Microsoft.Graph.Communications.Resources.IInternalResourceBase,Microsoft.Graph.IBaseRequest,System.Nullable{System.TimeSpan},System.Action{``0},System.Action{``0},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends the request and wait for operation completion asynchronously.
+            </summary>
+            <typeparam name="T"><see cref="T:System.Type" /> of the operation present in the response.</typeparam>
+            <param name="resource">The resource.</param>
+            <param name="request">The request to send.</param>
+            <param name="operationTimeoutValue">The timeout value specified for this operation.</param>
+            <param name="responseFunction">Function to be called when we receive a response from the service.</param>
+            <param name="updateFunction">Function to be called in case of update operation.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task`1" /> contains the completed <see cref="T:Microsoft.Graph.CommsOperation" />.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">Throws exception if the completion type is mismatched or client context returned is empty.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.SendRequestAndWaitForCompletionAsync(Microsoft.Graph.Communications.Resources.IInternalResourceBase,Microsoft.Graph.IBaseRequest,System.Nullable{System.TimeSpan},System.Action{Microsoft.Graph.CommsOperation},System.Action{Microsoft.Graph.CommsOperation},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends the request and wait for operation completion asynchronously.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="request">The request to send.</param>
+            <param name="operationTimeoutValue">The timeout value specified for this operation.</param>
+            <param name="responseFunction">Function to be called when we receive a response from the service.</param>
+            <param name="updateFunction">Function to be called in case of update operation.</param>
+            <param name="clientContext">The client context.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" /> contains the completed <see cref="T:Microsoft.Graph.CommsOperation" />.
+            </returns>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">Throws exception if the completion type is mismatched or client context returned is empty.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.InitializeNotificationSubscription(Microsoft.Graph.Communications.Resources.IResourceBase,System.Boolean)">
+            <summary>
+            Initializes the notification subscription.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="ignoreBacklog">If true, ignores the notifications in the backlog.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.UpdateEntity``2(``0,``1,Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Updates the entity for the specified resource.
+            </summary>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="resource">The resource.</param>
+            <param name="entity">The entity.</param>
+            <param name="args">The notification arguments.</param>
+            <returns>True if the resource has been updated, false otherwise.</returns>
+            <exception cref="T:System.InvalidOperationException">UpdateEntity</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.CopyContent``1(``0,``0)">
+            <summary>
+            Copies all content from the source object to the destination object.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="source">The source.</param>
+            <param name="destination">The destination.</param>
+            <exception cref="T:System.ArgumentException">When mismatched types were detected.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.InternalResourceExtensions.Duplicate``1(``0)">
+            <summary>
+            Duplicates the specified entity.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="entity">The entity.</param>
+            <returns>
+            A soft copy of the duplicated object.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IInternalResourceBase">
+            <summary>
+            The internal resource base interface.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceBase" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IInternalResourceBase.UriBuilder">
+            <summary>
+            Gets the builder.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IInternalResourceBase.InternalClient">
+            <summary>
+            Gets the internal client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IInternalResourceBase.OperationManager">
+            <summary>
+            Gets the operation manager.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IInternalResourceBase.NotificationDispatcher">
+            <summary>
+            Gets the notification dispatcher.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IInternalResourceBase.InitializeNotificationSubscription(System.Boolean)">
+            <summary>
+            Initializes the notification subscription.
+            </summary>
+            <param name="ignoreBacklog">If true, ignores the notifications in the backlog.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IInternalResourceBase.RehydrateAsync(System.String,System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Re-hydrates the resource at the specified path asynchronously.
+            </summary>
+            <param name="resourcePath">The resource path.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The child resources of this resource.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IInternalResourceCollection`3">
+            <summary>
+            The internal resource collection interface.
+            </summary>
+            <typeparam name="TSelf">The self type of the collection.</typeparam>
+            <typeparam name="TResource">The containing stateful resource type. <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /></typeparam>
+            <typeparam name="TEntity">The containing resource type. <see cref="T:Microsoft.Graph.Entity" /></typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection`3" />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IInternalResourceCollection`2">
+            <summary>
+            The internal resource collection interface.
+            </summary>
+            <typeparam name="TResource">The containing stateful resource type. <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /></typeparam>
+            <typeparam name="TEntity">The containing resource type. <see cref="T:Microsoft.Graph.Entity" /></typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection`2" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IInternalResourceCollection`2.CreateStatefulResource(`1,System.String,System.Guid,System.Action{`0})">
+            <summary>
+            Creates the <typeparamref name="TResource"/> from the specified <typeparamref name="TEntity"/>.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="configureResource">The configure resource action.
+            Parent class can use this action to configure the stateful resource prior
+            to the insertion to the content dictionary and the notification being raised.
+            This is used in the call collection to set the media session.</param>
+            <returns>
+            The newly created stateful resource.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the argument resource is null.</exception>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the argument resource does not contain an ID.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IInternalResourceCollection`2.RaiseEvents(System.Boolean,System.Collections.Generic.ICollection{`0},System.Collections.Generic.ICollection{`0},System.Collections.Generic.ICollection{`0},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Raises the events. Events will only be raised if there is at least one resource.
+            </summary>
+            <param name="initializeNotifications">If true, initializes the notification subscriptions.</param>
+            <param name="addedResources">The added resources.</param>
+            <param name="updatedResources">The updated resources.</param>
+            <param name="removedResources">The removed resources.</param>
+            <param name="additionalData">The additional data.</param>
+            <returns>
+            The events args raised.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResource`2">
+            <summary>
+            The stateful resource interface.
+            </summary>
+            <typeparam name="TSelf">The self type of the resource.</typeparam>
+            <typeparam name="TEntity">The containing <see cref="T:Microsoft.Graph.Entity" /> type.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResource" />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Resources.IResource`2.OnUpdated">
+            <summary>
+            Event fired when this resource has been updated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResource`2.Resource">
+            <summary>
+            Gets the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResource">
+            <summary>
+            The stateful resource interface.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceBase" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResource.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResource.ModifiedDateTime">
+            <summary>
+            Gets the last modified date time of this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResource.Resource">
+            <summary>
+            Gets the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResourceBase">
+            <summary>
+            The resource base interface.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceBase.CreatedDateTime">
+            <summary>
+            Gets the created date time of this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceBase.Client">
+            <summary>
+            Gets the client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceBase.GraphClient">
+            <summary>
+            Gets the graph client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceBase.GraphLogger">
+            <summary>
+            Gets the graph logger.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceBase.ResourcePath">
+            <summary>
+            Gets the resource path for this collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResourceCollection`3">
+            <summary>
+            The resource collection interface.
+            </summary>
+            <typeparam name="TSelf">The self type of the collection.</typeparam>
+            <typeparam name="TResource">The containing resource type. <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /></typeparam>
+            <typeparam name="TEntity">The containing resource type. <see cref="T:Microsoft.Graph.Entity" /></typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection`2" />
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Resources.IResourceCollection`3.OnUpdated">
+            <summary>
+            Event triggered whenever a resource is updated from the collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResourceCollection`2">
+            <summary>
+            The resource collection interface.
+            </summary>
+            <typeparam name="TResource">The containing resource type. <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /></typeparam>
+            <typeparam name="TEntity">The containing resource type. <see cref="T:Microsoft.Graph.Entity" /></typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection" />
+            <seealso cref="T:System.Collections.Generic.IReadOnlyCollection`1" />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.IResourceCollection`2.Item(System.String)">
+            <summary>
+            The resource with the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IResourceCollection`2.TryForceRemove(System.String,`0@)">
+            <summary>
+            Attempts to remove and return the value that has the specified id from the <see cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection`2"/>.
+            This will force remove the object, if for whatever reason it cannot be removed by the service.
+            It should only be used as a last resort to clean up stale resources.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="resource">The resource.</param>
+            <returns>true if the object was removed successfully; otherwise, false.</returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.IResourceCollection">
+            <summary>
+            The resource collection interface.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceBase" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.IResourceCollection.TerminateAsync(System.TimeSpan)">
+            <summary>
+            Performs collection specific terminate tasks.
+            </summary>
+            <param name="timeout">The timeout.</param>
+            <returns>
+            True if all instances terminated successfully, false otherwise.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.ResourceEventHandler`2">
+            <summary>
+            The resource event handler delegate.
+            </summary>
+            <typeparam name="TSender">The type of the resource. <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/></typeparam>
+            <typeparam name="TEntity">The containing resource type. <see cref="T:Microsoft.Graph.Entity" /></typeparam>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1">
+            <summary>
+            The resource event arguments.
+            </summary>
+            <typeparam name="TEntity">
+            The containing <see cref="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.NewResource"/> type.
+            <see cref="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.NewResource"/>
+            </typeparam>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.#ctor(`0,`0,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1" /> class.
+            </summary>
+            <param name="oldResource">The old resource.</param>
+            <param name="newResource">The new resource.</param>
+            <param name="resourcePath">The resource path.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.OldResource">
+            <summary>
+            Gets the old resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.NewResource">
+            <summary>
+            Gets the new resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.ResourcePath">
+            <summary>
+            Gets the resource path for this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.ResourceEventArgs`1.AdditionalData">
+            <summary>
+            Gets or sets the additional data for the event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.StatefulResource`3">
+            <summary>
+            The stateful resource.
+            </summary>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+            <typeparam name="TEntity">The containing <see cref="T:Microsoft.Graph.Entity" /> type.</typeparam>
+            <typeparam name="TBuilder">The type of the <see cref="T:Microsoft.Graph.IBaseRequestBuilder"/>.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResource`2" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`3.#ctor(Microsoft.Graph.Communications.Client.IInternalCommunicationsClient,Microsoft.Graph.Communications.Common.Transport.IGraphClient,`1,`2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResource`3" /> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="graphClient">The graph client.</param>
+            <param name="entity">The entity.</param>
+            <param name="uriBuilder">The uri builder.</param>
+            <exception cref="T:System.ArgumentNullException">When client or operationManager or resource or builder are null.</exception>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`3.UriBuilder">
+            <summary>
+            Gets the builder.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.StatefulResource`2">
+            <summary>
+            The stateful resource.
+            </summary>
+            <typeparam name="TResource">The type of the resource.</typeparam>
+            <typeparam name="TEntity">The containing <see cref="T:Microsoft.Graph.Entity" /> type.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResource`2" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.#ctor(Microsoft.Graph.Communications.Client.IInternalCommunicationsClient,Microsoft.Graph.Communications.Common.Transport.IGraphClient,`1,Microsoft.Graph.IBaseRequestBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResource`2" /> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="graphClient">The graph client.</param>
+            <param name="entity">The entity.</param>
+            <param name="uriBuilder">The uri builder.</param>
+            <exception cref="T:System.ArgumentNullException">When client or operationManager or resource or builder are null.</exception>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Resources.StatefulResource`2.OnUpdated">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`2.OnRemoved">
+            <summary>
+            Gets or sets the action to perform when the resource has been removed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`2.Resource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`2.Microsoft#Graph#Communications#Resources#IResource#Resource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`2.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResource`2.ModifiedDateTime">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.RehydrateAsync(System.String,System.String,System.Guid,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.UpdateEntity(`1,Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Updates the entity contained by this <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2"/>.
+            </summary>
+            <param name="entity">The new entity.</param>
+            <param name="args">The notification arguments.</param>
+            <returns>True if the resource has been updated, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.UpdateAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            Updates this <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /> asynchronously.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> for the request.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" /> to await.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.DeleteAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Deletes this <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /> asynchronously.
+            </summary>
+            <param name="handleHttpNotFoundInternally">If the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResource`2"/> is already gone, whether to handle the exception gracefully or not.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> for the request.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task" /> to await.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.NotificationReceived(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Triggered when a resource notification is received.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResource`2.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.StatefulResourceBase`1">
+            <summary>
+            The base class for the the stateful resources.
+            </summary>
+            <typeparam name="TBuilder">The type of the builder.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.StatefulResourceBase" />
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceBase" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase`1.#ctor(Microsoft.Graph.Communications.Client.IInternalCommunicationsClient,Microsoft.Graph.Communications.Common.Transport.IGraphClient,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResourceBase`1"/> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="graphClient">The graph client.</param>
+            <param name="uriBuilder">The URI builder.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase`1.UriBuilder">
+            <summary>
+            Gets the builder.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.StatefulResourceBase">
+            <summary>
+            The base class for the the stateful resources.
+            </summary>
+            <seealso cref="T:Microsoft.Graph.Communications.Common.ObjectRoot" />
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceBase" />
+        </member>
+        <member name="F:Microsoft.Graph.Communications.Resources.StatefulResourceBase.subscription">
+            <summary>
+            The notification subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.#ctor(Microsoft.Graph.Communications.Client.IInternalCommunicationsClient,Microsoft.Graph.Communications.Common.Transport.IGraphClient,Microsoft.Graph.IBaseRequestBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResourceBase" /> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="graphClient">The graph client.</param>
+            <param name="uriBuilder">The URI builder.</param>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.CreatedDateTime">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.Client">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.GraphClient">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.GraphLogger">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.ResourcePath">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.UriBuilder">
+            <summary>
+            Gets the builder.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.InternalClient">
+            <summary>
+            Gets the internal client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.OperationManager">
+            <summary>
+            Gets the operation manager.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceBase.NotificationDispatcher">
+            <summary>
+            Gets the notification dispatcher.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.InitializeNotificationSubscription(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.GetDataCollectionAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.GetDataAsync``1(System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.SetData(Microsoft.Graph.ChangeType,Microsoft.Graph.Communications.Resources.IResource,System.Collections.Generic.IEnumerable{Microsoft.Graph.Communications.Common.Transport.IGraphProperty},System.String,System.Lazy{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.RehydrateAsync(System.String,System.String,System.Guid,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.NotificationReceived(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Triggered when a resource notification is received.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceBase.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4">
+            <summary>
+            The stateful resource collection.
+            </summary>
+            <typeparam name="TCollection">The type of the collection.</typeparam>
+            <typeparam name="TResource">The containing <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" /> type.</typeparam>
+            <typeparam name="TEntity">The containing <see cref="T:Microsoft.Graph.Entity" /> type.</typeparam>
+            <typeparam name="TBuilder">The type of the builder.</typeparam>
+            <seealso cref="T:Microsoft.Graph.Communications.Common.ObjectRoot" />
+            <seealso cref="T:Microsoft.Graph.Communications.Resources.IResourceCollection`3" />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.#ctor(Microsoft.Graph.Communications.Client.IInternalCommunicationsClient,Microsoft.Graph.Communications.Common.Transport.IGraphClient,`3,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4" /> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="graphClient">The graph client.</param>
+            <param name="uriBuilder">The URI builder.</param>
+            <param name="canMaintainState">if set to <c>true</c> can maintain state.</param>
+            <exception cref="T:System.ArgumentNullException">When client or graph client or url builder are null.</exception>
+        </member>
+        <member name="E:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.OnUpdated">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.CanMaintainState">
+            <summary>
+            Gets a value indicating whether this collection can maintain state.
+            </summary>
+            <value>
+              <c>true</c> if this collection can maintain state; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.Content">
+            <summary>
+            Gets the content.
+            </summary>
+            <value>
+            The mapping of ids to stateful resources.
+            </value>
+        </member>
+        <member name="P:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.TryForceRemove(System.String,`1@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.RehydrateAsync(System.String,System.String,System.Guid,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.TerminateAsync(System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.NotificationReceived(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs)">
+            <summary>
+            Triggered when a resource notification is received.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.CreateStatefulResource(`2,System.String,System.Guid,System.Action{`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.RaiseEvents(System.Boolean,System.Collections.Generic.ICollection{`1},System.Collections.Generic.ICollection{`1},System.Collections.Generic.ICollection{`1},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Raises the events. Events will only be raised if there is at least one resource.
+            </summary>
+            <param name="initializeNotifications">If true, initializes the notification subscriptions.</param>
+            <param name="addedResources">The added resources.</param>
+            <param name="updatedResources">The updated resources.</param>
+            <param name="removedResources">The removed resources.</param>
+            <param name="additionalData">The additional data.</param>
+            <returns>
+            The events args raised.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GenerateStatefulResourceAsync(`2,System.String,System.Guid,System.Action{`1},System.Threading.CancellationToken)">
+            <summary>
+            Generates the resource by calling <see cref="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GenerateEntityAsync(Microsoft.Graph.Communications.Common.Transport.IGraphClient,`2,System.Boolean,System.Threading.CancellationToken)" />.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="configureResource">The configure resource action.
+            Parent class can use this action to configure the stateful resource prior
+            to the insertion to the content dictionary and the notification being raised.
+            This is used in the call collection to set the media session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The resource that was created.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the specified entity is null.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GetStatefulResourceAsync(`2,System.String,System.Guid,System.Action{`1},System.Threading.CancellationToken)">
+            <summary>
+            Gets the stateful resource asynchronously.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="configureResource">The configure resource action.
+            Parent class can use this action to configure the stateful resource prior
+            to the insertion to the content dictionary and the notification being raised.
+            This is used in the call collection to set the media session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The resource that was fetched.
+            </returns>
+            <exception cref="T:System.ArgumentException">If the specified entity id is empty.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GetGraphClient(`2,System.String,System.Guid)">
+            <summary>
+            Gets the graph client for the specified resource.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Common.Transport.IGraphClient"/> for the specified resource.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.GenerateEntityAsync(Microsoft.Graph.Communications.Common.Transport.IGraphClient,`2,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Sends the POST request to create the entity. This
+            can be overridden to setup how resource is generated.
+            </summary>
+            <param name="graphClient">The graph client.</param>
+            <param name="entity">The entity.</param>
+            <param name="createEntity">if set to <c>true</c> create the entity, otherwise fetch it.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Entity" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.CreateStatefulResourceFromEntity(Microsoft.Graph.Communications.Common.Transport.IGraphClient,`2,System.String,System.Guid)">
+            <summary>
+            Create a stateful resource for the specified entity.
+            </summary>
+            <param name="graphClient">The graph client.</param>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <returns>
+            The <see cref="T:Microsoft.Graph.Communications.Resources.IResource`2" />.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.ProcessCollectionNotification(Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs)">
+            <summary>
+            Triggered when a collection notification is received.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.CollectionNotificationEventArgs" /> instance containing the event data.</param>
+            <returns>The resulting stateful event args.</returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.ProcessChildNotification(Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs,Microsoft.Graph.ChangeType,`2)">
+            <summary>
+            Process the notification for the incoming entity.
+            This updates the content as required and does not raise any events.
+            </summary>
+            <param name="args">The <see cref="T:Microsoft.Graph.Communications.Core.Notifications.NotificationEventArgs" /> instance containing the event data.</param>
+            <param name="changeType">Type of the change.</param>
+            <param name="entity">The entity.</param>
+            <returns>
+            The resource that is processed.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">Child resource notification cannot be processed.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.RaiseChildNotificationEvents(Microsoft.Graph.ChangeType,`1,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Raises the child notification events.
+            </summary>
+            <param name="changeType">Type of the change.</param>
+            <param name="resource">The resource.</param>
+            <param name="additionalData">The additional data.</param>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.CreateStatefulResourceAsync(`2,System.String,System.Guid,System.Boolean,System.Action{`1},System.Threading.CancellationToken)">
+            <summary>
+            Creates the stateful resource asynchronously.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="createEntity">if set to <c>true</c> create the entity.</param>
+            <param name="configureResource">The configure resource action.
+            Parent class can use this action to configure the stateful resource prior
+            to the insertion to the content dictionary and the notification being raised.
+            This is used in the call collection to set the media session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The newly created stateful resource.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.CreateStatefulResource(Microsoft.Graph.Communications.Common.Transport.IGraphClient,`2,System.String,System.Guid,System.Action{`1})">
+            <summary>
+            Handle the stateful request OnCreated event.
+            </summary>
+            <param name="graphClient">The graph client.</param>
+            <param name="entity">The entity.</param>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="scenarioId">The scenario identifier.</param>
+            <param name="configureResource">The configure resource action.
+            Parent class can use this action to configure the stateful resource prior
+            to the insertion to the content dictionary and the notification being raised.
+            This is used in the call collection to set the media session.</param>
+            <returns>
+            The newly created stateful resource.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If the argument resource is null.</exception>
+            <exception cref="T:Microsoft.Graph.Communications.Core.Exceptions.ServiceException">If the argument resource does not contain an ID.</exception>
+        </member>
+        <member name="M:Microsoft.Graph.Communications.Resources.StatefulResourceCollection`4.RaiseOperationManagerDeleteNotification(`1,Microsoft.Graph.ChangeType)">
+            <summary>
+            Raises the operation manager delete notification.
+            </summary>
+            <param name="resource">The resource.</param>
+            <param name="changeType">Type of the change.</param>
+        </member>
+    </members>
+</doc>
