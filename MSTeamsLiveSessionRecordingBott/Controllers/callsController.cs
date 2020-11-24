@@ -1,5 +1,4 @@
 ﻿using Microsoft.Graph.Communications.Client;
-using Microsoft.Graph.Communications.Client.Authentication;
 using NLog;
 using System.Net.Http;
 using System.Threading.Tasks;
