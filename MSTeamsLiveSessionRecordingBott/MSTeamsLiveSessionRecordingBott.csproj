@@ -418,6 +418,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authentication\AuthenticationProvider.cs" />
     <Compile Include="Bot\Bot.cs" />
+    <Compile Include="Bot\IConfiguration.cs" />
     <Compile Include="Bot\SampleObserver.cs" />
     <Compile Include="Bot\Service.cs" />
     <Compile Include="Bot\VideoConstants.cs" />
